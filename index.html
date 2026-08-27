@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="pl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
+<!DOCTYPE html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Orkiestra Hub 🎺</title>
-
-<style>
+<title>Orkiestra Hub 🎺</title><style>
 
 /* ==================================================
    RESET
@@ -26,6 +17,7 @@ html {
 
 body {
     margin: 0;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -34,71 +26,147 @@ body {
         sans-serif;
 
     background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(170,198,181,.28),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 100% 20%,
+            rgba(214,228,218,.32),
+            transparent 30%
+        ),
         linear-gradient(
             180deg,
-            #eef4ef 0%,
-            #f7f8f4 45%,
-            #f3f5f1 100%
+            #edf4ef 0%,
+            #f8faf7 42%,
+            #f1f5f1 100%
         );
 
     color: #294238;
+
     min-height: 100vh;
 }
 
 
 /* ==================================================
-   NAGŁÓWEK
+   HEADER
 ================================================== */
 
 header {
+    position: relative;
+    overflow: hidden;
+
     background:
         linear-gradient(
             135deg,
-            #294238,
-            #38594a
+            #233c31,
+            #315344 55%,
+            #416553
         );
 
     color: white;
 
     padding:
-        30px
+        38px
         20px
-        28px;
+        34px;
 
     border-radius:
         0
         0
-        30px
-        30px;
+        34px
+        34px;
 
     box-shadow:
-        0 8px 30px rgba(41,66,56,.16);
+        0 12px 35px rgba(41,66,56,.20);
+}
+
+header::before {
+    content: "🎺";
+    position: absolute;
+
+    right: 22px;
+    top: 18px;
+
+    font-size: 65px;
+
+    opacity: .10;
+
+    transform: rotate(12deg);
+}
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -80px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.07);
 }
 
 .header-inner {
     max-width: 650px;
     margin: auto;
+
+    position: relative;
+    z-index: 2;
+}
+
+.header-badge {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.12);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    backdrop-filter: blur(8px);
 }
 
 header h1 {
     margin: 0;
 
-    font-size: 28px;
-    letter-spacing: -0.5px;
+    font-size: 30px;
+
+    letter-spacing: -1px;
+
+    line-height: 1.1;
 }
 
 header p {
-    margin: 8px 0 0;
+    margin: 9px 0 0;
 
-    opacity: .78;
+    opacity: .76;
 
     font-size: 14px;
-    line-height: 1.5;
+
+    line-height: 1.55;
+
+    max-width: 440px;
 }
 
 
 /* ==================================================
-   GŁÓWNA ZAWARTOŚĆ
+   MAIN
 ================================================== */
 
 main {
@@ -109,34 +177,42 @@ main {
     padding:
         18px
         15px
-        110px;
+        115px;
 }
 
 
 /* ==================================================
-   ZAKŁADKI
+   TABS
 ================================================== */
 
 .tabs {
     display: flex;
 
-    background: rgba(255,255,255,.92);
+    gap: 4px;
 
-    padding: 5px;
+    background:
+        rgba(255,255,255,.88);
 
-    border-radius: 21px;
+    padding: 6px;
 
-    margin-bottom: 20px;
+    border-radius: 23px;
+
+    margin-bottom: 22px;
 
     box-shadow:
-        0 5px 20px rgba(41,66,56,.08);
+        0 7px 25px rgba(41,66,56,.09);
+
+    border:
+        1px solid rgba(41,66,56,.05);
 
     position: sticky;
-    top: 10px;
+
+    top: 9px;
 
     z-index: 20;
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:
+        blur(14px);
 }
 
 .tab {
@@ -146,42 +222,59 @@ main {
 
     background: transparent;
 
-    padding: 11px 5px;
+    padding:
+        11px
+        5px;
 
-    border-radius: 17px;
+    border-radius: 18px;
 
     cursor: pointer;
 
-    color: #587066;
+    color: #718078;
 
-    font-size: 13px;
+    font-size: 12px;
 
-    font-weight: 600;
+    font-weight: 650;
+
+    line-height: 1.35;
 
     transition:
-        background .2s ease,
-        color .2s ease,
-        transform .15s ease;
+        all .18s ease;
+}
+
+.tab:hover {
+    background: #f1f5f2;
+
+    color: #3b5549;
 }
 
 .tab:active {
-    transform: scale(.96);
+    transform: scale(.95);
 }
 
 .tab.active {
-    background: #dce9df;
+    background:
+        linear-gradient(
+            135deg,
+            #dceae0,
+            #e8f0e9
+        );
 
     color: #294238;
 
     font-weight: 800;
 
     box-shadow:
-        inset 0 0 0 1px rgba(41,66,56,.04);
+        inset 0 0 0 1px
+        rgba(41,66,56,.05),
+
+        0 2px 7px
+        rgba(41,66,56,.05);
 }
 
 
 /* ==================================================
-   SEKCJE
+   SECTIONS
 ================================================== */
 
 .section {
@@ -199,7 +292,7 @@ main {
 
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(7px);
     }
 
     to {
@@ -211,7 +304,7 @@ main {
 
 
 /* ==================================================
-   KARTY
+   CARDS
 ================================================== */
 
 .card,
@@ -219,37 +312,72 @@ main {
 .search-card {
 
     background:
-        rgba(255,255,255,.96);
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 5px 20px rgba(41,66,56,.07);
+        rgba(255,255,255,.94);
 
     border:
-        1px solid rgba(41,66,56,.035);
+        1px solid rgba(41,66,56,.055);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 6px 24px
+        rgba(41,66,56,.065);
+
+    backdrop-filter:
+        blur(8px);
 }
 
 .card {
-    padding: 19px;
+    padding: 20px;
 
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
-.card h2,
+.card h2 {
+    margin:
+        0
+        0
+        7px;
+
+    font-size: 21px;
+
+    letter-spacing: -.35px;
+}
+
 .card h3 {
     margin-top: 0;
+
+    letter-spacing: -.2px;
 }
 
 .small {
-    color: #718078;
+    color: #75827c;
 
-    font-size: 13px;
+    font-size: 12px;
+
+    line-height: 1.5;
 }
 
 
 /* ==================================================
-   POLA
+   LABELS
+================================================== */
+
+label {
+    display: block;
+
+    color: #50665b;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-top: 10px;
+}
+
+
+/* ==================================================
+   INPUTS
 ================================================== */
 
 input,
@@ -257,15 +385,18 @@ textarea {
 
     width: 100%;
 
-    padding: 14px;
+    padding:
+        14px
+        15px;
 
     margin-top: 8px;
+
     margin-bottom: 12px;
 
     border:
         2px solid #e3eae5;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     font-family: inherit;
 
@@ -273,25 +404,39 @@ textarea {
 
     color: #294238;
 
-    background: #fbfcfa;
+    background:
+        #fafcf9;
 
     outline: none;
 
     transition:
         border .2s ease,
         box-shadow .2s ease,
-        background .2s ease;
+        background .2s ease,
+        transform .15s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a0aaa5;
+}
+
+input:hover,
+textarea:hover {
+    border-color: #d4e0d7;
 }
 
 input:focus,
 textarea:focus {
 
-    border-color: #9ab6a4;
+    border-color:
+        #8eae9b;
 
     background: white;
 
     box-shadow:
-        0 0 0 4px rgba(154,182,164,.15);
+        0 0 0 4px
+        rgba(142,174,155,.13);
 }
 
 textarea {
@@ -299,11 +444,13 @@ textarea {
     min-height: 120px;
 
     resize: vertical;
+
+    line-height: 1.5;
 }
 
 
 /* ==================================================
-   PRZYCISKI
+   PRIMARY BUTTON
 ================================================== */
 
 .primary {
@@ -316,52 +463,88 @@ textarea {
         linear-gradient(
             135deg,
             #294238,
-            #3b5d4d
+            #3d6251
         );
 
     color: white;
 
-    padding: 14px;
+    padding: 15px;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     font-weight: 800;
+
+    font-size: 13px;
+
+    letter-spacing: .15px;
 
     cursor: pointer;
 
     margin-top: 8px;
 
     box-shadow:
-        0 5px 15px rgba(41,66,56,.18);
+        0 7px 18px
+        rgba(41,66,56,.19);
 
     transition:
         transform .15s ease,
-        box-shadow .15s ease;
+        box-shadow .15s ease,
+        filter .15s ease;
+}
+
+.primary:hover {
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 9px 22px
+        rgba(41,66,56,.22);
 }
 
 .primary:active {
 
-    transform: scale(.98);
+    transform:
+        translateY(1px)
+        scale(.985);
 
     box-shadow:
-        0 2px 8px rgba(41,66,56,.15);
+        0 3px 9px
+        rgba(41,66,56,.15);
 }
+
+
+/* ==================================================
+   SECONDARY BUTTON
+================================================== */
 
 .secondary {
 
     border: 0;
 
-    background: #e5ece7;
+    background:
+        #e7eee9;
 
-    color: #294238;
+    color: #365246;
 
-    padding: 10px 14px;
+    padding:
+        10px
+        15px;
 
-    border-radius: 13px;
+    border-radius: 14px;
 
     cursor: pointer;
 
-    font-weight: 600;
+    font-weight: 700;
+
+    transition:
+        all .15s ease;
+}
+
+.secondary:hover {
+    background: #dce8df;
+}
+
+.secondary:active {
+    transform: scale(.96);
 }
 
 
@@ -371,9 +554,34 @@ textarea {
 
 .search-card {
 
-    padding: 18px;
+    padding: 19px;
 
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.97),
+            rgba(247,250,247,.96)
+        );
+}
+
+.search-icon {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 13px;
+
+    background: #e6efe8;
+
+    font-size: 19px;
+
+    margin-bottom: 9px;
 }
 
 .search-card h2 {
@@ -381,7 +589,9 @@ textarea {
     margin:
         0
         0
-        5px;
+        4px;
+
+    font-size: 20px;
 }
 
 .search-card p {
@@ -393,29 +603,116 @@ textarea {
 }
 
 #searchInput {
-
     margin-bottom: 0;
 }
 
 
 /* ==================================================
-   PYTANIA
+   EVENTS
+================================================== */
+
+.event-card {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.event-date {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    background: #e9f1eb;
+
+    color: #52705f;
+
+    padding:
+        6px
+        10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+.event-title {
+    margin:
+        0
+        0
+        8px;
+
+    font-size: 19px;
+
+    line-height: 1.25;
+}
+
+.event-description {
+    color: #50625a;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    white-space: pre-wrap;
+}
+
+.event-location {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 12px;
+
+    padding-top: 11px;
+
+    border-top:
+        1px solid #edf1ed;
+
+    color: #63756c;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* ==================================================
+   QUESTIONS
 ================================================== */
 
 .question-card {
 
-    padding: 18px;
+    padding: 19px;
 
     margin-bottom: 15px;
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease;
+        transform .16s ease,
+        box-shadow .16s ease;
+}
+
+.question-card:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 9px 28px
+        rgba(41,66,56,.09);
 }
 
 .question-card:active {
 
-    transform: scale(.99);
+    transform:
+        scale(.992);
 }
 
 .question-title {
@@ -424,34 +721,53 @@ textarea {
 
     font-weight: 750;
 
-    line-height: 1.45;
+    line-height: 1.5;
 
-    margin-top: 5px;
+    margin-top: 6px;
+
+    color: #294238;
 }
 
 .question-meta {
 
     color: #78857e;
 
-    font-size: 13px;
+    font-size: 12px;
 
-    margin-top: 8px;
+    margin-top: 9px;
+}
+
+.anonymous-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: #708078;
+
+    font-size: 11px;
+
+    font-weight: 650;
 }
 
 
 /* ==================================================
-   SERDUSZKA
+   LIKES
 ================================================== */
 
 .like-button {
 
     border: 0;
 
-    background: #f0f4f1;
+    background:
+        #f0f4f1;
 
-    color: #294238;
+    color: #496156;
 
-    padding: 9px 13px;
+    padding:
+        9px
+        13px;
 
     border-radius: 13px;
 
@@ -459,62 +775,77 @@ textarea {
 
     margin-top: 12px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     transition:
         transform .15s ease,
         background .15s ease;
 }
 
+.like-button:hover {
+    background: #e8eeea;
+}
+
 .like-button:active {
 
-    transform: scale(.94);
+    transform:
+        scale(.91);
 }
 
 .like-button.liked {
 
-    background: #ffe4e8;
+    background:
+        #ffe5e9;
+
+    color:
+        #9a5261;
 }
 
 
 /* ==================================================
-   ODPOWIEDZI
+   ANSWERS
 ================================================== */
 
 .answer {
 
     background:
         linear-gradient(
-            135deg,
-            #f0f4f1,
-            #f5f7f4
+            145deg,
+            #f0f5f1,
+            #f7f9f7
         );
 
-    padding: 15px;
+    padding: 16px;
 
-    border-radius: 17px;
+    border-radius: 18px;
 
-    margin-top: 10px;
+    margin-top: 11px;
 
     border:
-        1px solid #e4ebe5;
+        1px solid #e3ebe5;
 }
 
 .answer p {
 
-    line-height: 1.5;
+    line-height: 1.55;
+
+    font-size: 14px;
+
+    color: #43584e;
+
+    white-space: pre-wrap;
 }
 
 
 /* ==================================================
-   ZDJĘCIA
+   POST IMAGES
 ================================================== */
 
 .post-image {
 
     width: 100%;
 
-    max-height: 420px;
+    max-height: 430px;
 
     object-fit: contain;
 
@@ -522,12 +853,17 @@ textarea {
 
     margin-top: 14px;
 
-    border-radius: 17px;
+    border-radius: 18px;
 
-    background: #eef2ee;
+    background:
+        #edf2ee;
 
     border:
-        1px solid #e1e8e2;
+        1px solid #e0e8e2;
+
+    box-shadow:
+        0 4px 14px
+        rgba(41,66,56,.06);
 }
 
 
@@ -537,7 +873,8 @@ textarea {
 
 .upload-box {
 
-    margin-top: 8px;
+    margin-top: 10px;
+
     margin-bottom: 12px;
 }
 
@@ -552,29 +889,45 @@ textarea {
 
     width: 100%;
 
-    padding: 13px;
+    padding: 14px;
 
     border:
-        2px dashed #b9cbbf;
+        2px dashed #b7cbbd;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
-    background: #f5f8f5;
+    background:
+        linear-gradient(
+            135deg,
+            #f5f9f6,
+            #f0f6f1
+        );
 
     color: #456253;
 
     cursor: pointer;
 
-    font-weight: 700;
+    font-weight: 750;
 
     transition:
         background .2s ease,
-        border .2s ease;
+        border .2s ease,
+        transform .15s ease;
+}
+
+.upload-label:hover {
+
+    background:
+        #eaf2ec;
+
+    border-color:
+        #9db8a5;
 }
 
 .upload-label:active {
 
-    background: #eaf1ec;
+    transform:
+        scale(.98);
 }
 
 .upload-input {
@@ -586,16 +939,75 @@ textarea {
 
     margin-top: 7px;
 
-    color: #718078;
+    color: #7a8780;
 
-    font-size: 12px;
+    font-size: 11px;
 
     text-align: center;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
 }
 
 
 /* ==================================================
-   PRZYCISK +
+   QUESTION PAGE
+================================================== */
+
+#questionPage .card {
+    margin-top: 15px;
+}
+
+.question-page-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #708078;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+.question-page-title {
+
+    font-size: 22px;
+
+    line-height: 1.4;
+
+    margin:
+        0
+        0
+        5px;
+
+    letter-spacing: -.4px;
+}
+
+.answers-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 27px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid #e8eee9;
+}
+
+
+/* ==================================================
+   PLUS BUTTON
 ================================================== */
 
 .plus {
@@ -603,10 +1015,12 @@ textarea {
     position: fixed;
 
     right: 20px;
-    bottom: 25px;
 
-    width: 62px;
-    height: 62px;
+    bottom: 24px;
+
+    width: 63px;
+
+    height: 63px;
 
     border-radius: 50%;
 
@@ -616,27 +1030,43 @@ textarea {
         linear-gradient(
             135deg,
             #294238,
-            #426553
+            #47715b
         );
 
     color: white;
 
-    font-size: 30px;
+    font-size: 31px;
+
+    line-height: 1;
 
     cursor: pointer;
 
     box-shadow:
-        0 8px 25px rgba(41,66,56,.28);
+        0 9px 27px
+        rgba(41,66,56,.30);
 
     z-index: 50;
 
     transition:
-        transform .15s ease;
+        transform .17s ease,
+        box-shadow .17s ease;
+}
+
+.plus:hover {
+
+    transform:
+        translateY(-2px)
+        scale(1.03);
+
+    box-shadow:
+        0 12px 31px
+        rgba(41,66,56,.34);
 }
 
 .plus:active {
 
-    transform: scale(.92);
+    transform:
+        scale(.90);
 }
 
 
@@ -653,51 +1083,73 @@ textarea {
     inset: 0;
 
     background:
-        rgba(22,35,29,.48);
+        rgba(22,35,29,.52);
 
     align-items: center;
+
     justify-content: center;
 
     padding: 18px;
 
     z-index: 100;
 
-    backdrop-filter: blur(4px);
+    backdrop-filter:
+        blur(6px);
 }
 
 .modal-box {
 
-    background: white;
+    background:
+        rgba(255,255,255,.98);
 
     width: 100%;
 
     max-width: 500px;
 
-    padding: 22px;
+    padding: 23px;
 
-    border-radius: 25px;
+    border-radius: 27px;
 
     max-height: 90vh;
 
     overflow-y: auto;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,.2);
+        0 18px 60px
+        rgba(0,0,0,.23);
 
     animation:
-        modalIn .2s ease;
+        modalIn .22s ease;
+}
+
+.modal-box h2 {
+
+    margin:
+        2px
+        0
+        19px;
+
+    font-size: 21px;
+
+    letter-spacing: -.3px;
 }
 
 @keyframes modalIn {
 
     from {
         opacity: 0;
-        transform: scale(.96) translateY(8px);
+
+        transform:
+            scale(.95)
+            translateY(10px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1) translateY(0);
+
+        transform:
+            scale(1)
+            translateY(0);
     }
 
 }
@@ -708,194 +1160,258 @@ textarea {
 
     border: 0;
 
-    background: #edf2ee;
+    background:
+        #edf2ee;
 
-    color: #294238;
+    color:
+        #294238;
 
-    width: 35px;
-    height: 35px;
+    width: 36px;
+
+    height: 36px;
 
     border-radius: 50%;
 
-    font-size: 23px;
+    font-size: 22px;
 
     cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        background .15s ease;
+}
+
+.close:hover {
+    background: #e2ebe4;
+}
+
+.close:active {
+    transform: scale(.88);
 }
 
 
 /* ==================================================
-   PUSTE
+   EMPTY STATES
 ================================================== */
 
 .empty {
 
     text-align: center;
 
-    padding: 45px 20px;
+    padding:
+        48px
+        20px;
 
-    color: #78857e;
+    color:
+        #78857e;
 
-    background: rgba(255,255,255,.7);
+    background:
+        rgba(255,255,255,.72);
 
-    border-radius: 22px;
+    border:
+        1px solid rgba(41,66,56,.045);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(41,66,56,.045);
 }
 
 .empty-icon {
 
-    font-size: 42px;
+    font-size: 43px;
 
     margin-bottom: 8px;
+
+    filter:
+        drop-shadow(
+            0 3px 5px
+            rgba(41,66,56,.08)
+        );
+}
+
+.empty p {
+    margin:
+        0;
+
+    font-size: 14px;
 }
 
 
 /* ==================================================
-   RESPONSYWNOŚĆ
+   DIVIDERS
+================================================== */
+
+.soft-divider {
+
+    height: 1px;
+
+    background:
+        #e9eee9;
+
+    margin:
+        18px
+        0;
+}
+
+
+/* ==================================================
+   MOBILE
 ================================================== */
 
 @media (max-width: 480px) {
 
+    header {
+        padding:
+            31px
+            17px
+            29px;
+    }
+
     header h1 {
-        font-size: 25px;
+        font-size: 26px;
+    }
+
+    header p {
+        font-size: 13px;
     }
 
     main {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding:
+            14px
+            11px
+            105px;
     }
 
     .tabs {
-        top: 7px;
+        top: 6px;
+
+        border-radius: 21px;
+    }
+
+    .tab {
+        font-size: 11px;
+
+        padding:
+            10px
+            3px;
+    }
+
+    .card,
+    .question-card,
+    .search-card {
+        border-radius: 21px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    .question-card {
+        padding: 17px;
+    }
+
+    .plus {
+        right: 17px;
+        bottom: 19px;
+
+        width: 59px;
+        height: 59px;
     }
 
 }
 
-</style>
 
-</head>
+/* ==================================================
+   REDUCED MOTION
+================================================== */
 
+@media (prefers-reduced-motion: reduce) {
 
-<body>
+    *,
+    *::before,
+    *::after {
 
+        animation-duration: .01ms !important;
 
-<!-- ==================================================
-     NAGŁÓWEK
-================================================== -->
+        animation-iteration-count: 1 !important;
 
-<header>
+        transition-duration: .01ms !important;
 
-<div class="header-inner">
+        scroll-behavior: auto !important;
+    }
 
-<h1>🎺 Orkiestra Hub</h1>
+}
 
-<p>
-Wszystko, czego potrzebujemy w jednym miejscu.
-</p>
-
-</div>
-
-</header>
-
-
-<main>
-
-
-<!-- ==================================================
-     ZAKŁADKI
-================================================== -->
-
-<div class="tabs">
-
-<button
+</style></head><body><!-- ==================================================
+     HEADER
+================================================== --><header><div class="header-inner"><div class="header-badge">
+    🎺 NASZA ORKIESTRA
+</div><h1>
+    Orkiestra Hub
+</h1><p>
+    Wszystko, czego potrzebujemy,
+    w jednym miejscu. 🌿
+</p></div></header><main><!-- ==================================================
+     TABS
+================================================== --><div class="tabs"><button
 class="tab active"
 onclick="showTab('events', this)"
->
+
+«»
+
 📅<br>
 Wydarzenia
 </button>
 
-
 <button
 class="tab"
 onclick="showTab('ask', this)"
->
+
+«»
+
 💬<br>
 Zapytaj
 </button>
 
-
 <button
 class="tab"
 onclick="showTab('answers', this)"
->
+
+«»
+
 💡<br>
 Odpowiedzi
 </button>
 
-</div>
-
-
-
-<!-- ==================================================
-     WYDARZENIA
-================================================== -->
-
-<section
+</div><!-- ==================================================
+     EVENTS
+================================================== --><section
 id="events"
 class="section active"
->
-
-<div id="eventsList">
-
-<div class="empty">
-
-<div class="empty-icon">
-📅
-</div>
-
-<p>
-Ładowanie wydarzeń...
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ==================================================
-     ZAPYTAJ
-================================================== -->
-
-<section
+><div id="eventsList"><div class="empty"><div class="empty-icon">
+    📅
+</div><p>
+    Ładowanie wydarzeń...
+</p></div></div></section><!-- ==================================================
+     ASK
+================================================== --><section
 id="ask"
 class="section"
->
-
-<div class="card">
-
-<h2>
-💬 Zadaj anonimowe pytanie
-</h2>
-
-<p class="small">
-Bez konta. Bez imienia. Bez wstydu.
-</p>
-
-
-<textarea
+><div class="card"><h2>
+    💬 Zadaj anonimowe pytanie
+</h2><p class="small">
+    Bez konta. Bez imienia. Bez wstydu. 💚
+</p><textarea
 id="questionInput"
 placeholder="O co chcesz zapytać?"
-></textarea>
-
-
-<div class="upload-box">
-
-<label
+></textarea><div class="upload-box"><label
 class="upload-label"
 for="questionImage"
->
+
+«»
+
 📷 Dodaj zdjęcie PNG
 </label>
 
@@ -905,206 +1421,134 @@ id="questionImage"
 type="file"
 accept="image/png"
 onchange="showFileName('questionImage','questionFileName')"
->
+
+«»
 
 <div
 id="questionFileName"
 class="file-name"
 >
 Nie wybrano zdjęcia
-</div>
-
-</div>
-
-
-<button
+</div></div><button
 class="primary"
 onclick="submitQuestion()"
->
+
+«»
+
 ZAPYTAJ ANONIMOWO
 </button>
 
-</div>
-
-</section>
-
-
-
-<!-- ==================================================
-     ODPOWIEDZI
-================================================== -->
-
-<section
+</div></section><!-- ==================================================
+     ANSWERS
+================================================== --><section
 id="answers"
 class="section"
->
-
-
-<div class="search-card">
-
-<h2>
-🔍 Szukaj pytań
-</h2>
-
-<p class="small">
-Znajdź pytania dotyczące tego, czego szukasz.
-</p>
-
-
-<input
+><div class="search-card"><div class="search-icon">
+    🔍
+</div><h2>
+    Szukaj pytań
+</h2><p class="small">
+    Znajdź pytania dotyczące tego,
+    czego szukasz.
+</p><input
 id="searchInput"
 type="text"
 placeholder="Np. mundur, wyjazd, próba..."
 oninput="searchQuestions()"
->
 
-</div>
+«»
 
-
-<div id="questionsList">
-
-<div class="empty">
-
-<div class="empty-icon">
-💡
-</div>
-
-<p>
-Ładowanie pytań...
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ==================================================
-     STRONA PYTANIA
-================================================== -->
-
-<section
+</div><div id="questionsList"><div class="empty"><div class="empty-icon">
+    💡
+</div><p>
+    Ładowanie pytań...
+</p></div></div></section><!-- ==================================================
+     QUESTION PAGE
+================================================== --><section
 id="questionPage"
 class="section"
->
-
-<button
+><button
 class="secondary"
 onclick="backToQuestions()"
->
+
+«»
+
 ← Wróć do pytań
 </button>
-
 
 <div
 id="questionContent"
 style="margin-top:15px;"
-></div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- ==================================================
-     PRZYCISK +
-================================================== -->
-
-<button
+></div></section></main><!-- ==================================================
+     PLUS
+================================================== --><button
 id="plusButton"
 class="plus"
 onclick="openEventModal()"
->
-+
-</button>
 
+«»
 
++ 
 
-<!-- ==================================================
-     MODAL WYDARZENIA
-================================================== -->
-
-<div
+</button><!-- ==================================================
+     EVENT MODAL
+================================================== --><div
 id="eventModal"
 class="modal"
->
-
-<div class="modal-box">
-
-
-<button
+><div class="modal-box"><button
 class="close"
 onclick="closeEventModal()"
->
+
+«»
+
 ×
 </button>
 
-
 <h2>
 📅 Dodaj wydarzenie
-</h2>
-
-
-<label>
+</h2><label>
 Nazwa wydarzenia
-</label>
-
-<input
+</label><input
 id="eventName"
 placeholder="Koncert, próba, wyjazd..."
->
 
+«»
 
 <label>
 Data
-</label>
-
-<input
+</label><input
 id="eventDate"
 type="date"
->
 
+«»
 
 <label>
 Godzina
-</label>
-
-<input
+</label><input
 id="eventTime"
 type="time"
->
 
+«»
 
 <label>
 Miejsce
-</label>
-
-<input
+</label><input
 id="eventLocation"
 placeholder="Gdzie?"
->
 
+«»
 
 <label>
 Dodatkowe informacje
-</label>
-
-<textarea
+</label><textarea
 id="eventDescription"
 placeholder="Mundur, co zabrać, godzina zbiórki..."
-></textarea>
-
-
-<div class="upload-box">
-
-<label
+></textarea><div class="upload-box"><label
 class="upload-label"
 for="eventImage"
->
+
+«»
+
 📷 Dodaj zdjęcie PNG
 </label>
 
@@ -1114,39 +1558,26 @@ id="eventImage"
 type="file"
 accept="image/png"
 onchange="showFileName('eventImage','eventFileName')"
->
+
+«»
 
 <div
 id="eventFileName"
 class="file-name"
 >
 Nie wybrano zdjęcia
-</div>
-
-</div>
-
-
-<button
+</div></div><button
 class="primary"
 onclick="addOrchestraEvent()"
->
+
+«»
+
 DODAJ WYDARZENIE 🎺
 </button>
 
-</div>
-
-</div>
-
-
-
-<!-- ==================================================
+</div></div><!-- ==================================================
      SUPABASE
-================================================== -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<script>
+================================================== --><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 
 /* ==================================================
    SUPABASE
@@ -1169,7 +1600,7 @@ supabase.createClient(
 
 
 /* ==================================================
-   ZAKŁADKI
+   TABS
 ================================================== */
 
 function showTab(name, button) {
@@ -1235,7 +1666,7 @@ function closeEventModal() {
 
 
 /* ==================================================
-   PLIK — SPRAWDZENIE PNG
+   PNG CHECK
 ================================================== */
 
 function getPNGFile(inputId) {
@@ -1295,7 +1726,7 @@ function getPNGFile(inputId) {
 
 
 /* ==================================================
-   NAZWA PLIKU
+   FILE NAME
 ================================================== */
 
 function showFileName(
@@ -1379,7 +1810,7 @@ function showFileName(
 
 
 /* ==================================================
-   UPLOAD DO SUPABASE STORAGE
+   UPLOAD
 ================================================== */
 
 async function uploadPNG(file) {
@@ -1454,7 +1885,7 @@ async function uploadPNG(file) {
 
 
 /* ==================================================
-   DODAWANIE WYDARZENIA
+   ADD EVENT
 ================================================== */
 
 async function addOrchestraEvent() {
@@ -1633,7 +2064,7 @@ async function addOrchestraEvent() {
 
 
 /* ==================================================
-   WCZYTYWANIE WYDARZEŃ
+   LOAD EVENTS
 ================================================== */
 
 async function loadEvents() {
@@ -1721,7 +2152,7 @@ async function loadEvents() {
 
 
         card.className =
-            "card";
+            "card event-card";
 
 
         let imageHTML = "";
@@ -1745,7 +2176,7 @@ async function loadEvents() {
 
         card.innerHTML = `
 
-            <div class="small">
+            <div class="event-date">
 
                 📆 ${escapeHTML(event.date)}
 
@@ -1761,7 +2192,7 @@ async function loadEvents() {
             </div>
 
 
-            <h3>
+            <h3 class="event-title">
 
                 🎵 ${escapeHTML(event.name)}
 
@@ -1771,9 +2202,9 @@ async function loadEvents() {
             ${
                 event.description
                 ?
-                `<p>
+                `<div class="event-description">
                     ${escapeHTML(event.description)}
-                </p>`
+                </div>`
                 :
                 ""
             }
@@ -1782,7 +2213,7 @@ async function loadEvents() {
             ${
                 event.location
                 ?
-                `<div class="small">
+                `<div class="event-location">
                     📍 ${escapeHTML(event.location)}
                 </div>`
                 :
@@ -1804,7 +2235,7 @@ async function loadEvents() {
 
 
 /* ==================================================
-   DODAWANIE PYTANIA
+   ADD QUESTION
 ================================================== */
 
 async function submitQuestion() {
@@ -1929,7 +2360,7 @@ async function submitQuestion() {
 
 
 /* ==================================================
-   PRZEJŚCIE DO ODPOWIEDZI
+   SHOW ANSWERS TAB
 ================================================== */
 
 function showAnswersTab() {
@@ -1975,7 +2406,7 @@ function showAnswersTab() {
 
 
 /* ==================================================
-   WCZYTYWANIE PYTAŃ
+   LOAD QUESTIONS
 ================================================== */
 
 async function loadQuestions(
@@ -2127,7 +2558,7 @@ async function loadQuestions(
                 style="cursor:pointer;"
             >
 
-                <div class="small">
+                <div class="anonymous-badge">
                     💬 Anonimowo
                 </div>
 
@@ -2179,7 +2610,7 @@ async function loadQuestions(
 
 
 /* ==================================================
-   WYSZUKIWANIE
+   SEARCH
 ================================================== */
 
 function searchQuestions() {
@@ -2204,7 +2635,7 @@ function searchQuestions() {
 
 
 /* ==================================================
-   LIKE PYTANIA
+   LIKE QUESTION
 ================================================== */
 
 async function likeQuestion(
@@ -2298,7 +2729,7 @@ async function likeQuestion(
 
 
 /* ==================================================
-   OTWIERANIE PYTANIA
+   OPEN QUESTION
 ================================================== */
 
 async function openQuestion(
@@ -2381,12 +2812,12 @@ async function openQuestion(
 
         <div class="card">
 
-            <div class="small">
+            <div class="question-page-header">
                 💬 Anonimowo
             </div>
 
 
-            <h2>
+            <h2 class="question-page-title">
 
                 ${escapeHTML(
                     question.text
@@ -2412,10 +2843,10 @@ async function openQuestion(
             </button>
 
 
-            <h3
-                style="margin-top:25px;"
-            >
+            <h3 class="answers-heading">
+
                 💡 Odpowiedzi
+
             </h3>
 
     `;
@@ -2466,7 +2897,7 @@ async function openQuestion(
 
                 <div class="answer">
 
-                    <div class="small">
+                    <div class="anonymous-badge">
                         💬 Anonimowo
                     </div>
 
@@ -2511,442 +2942,423 @@ async function openQuestion(
             <textarea
                 id="answerInput"
                 placeholder="Napisz anonimową odpowiedź..."
-            ></textarea>
+            ></textarea>        <div class="upload-box">
+
+            <label
+                class="upload-label"
+                for="answerImage"
+            >
+                📷 Dodaj zdjęcie PNG
+            </label>
 
 
-            <div class="upload-box">
-
-                <label
-                    class="upload-label"
-                    for="answerImage"
-                >
-                    📷 Dodaj zdjęcie PNG
-                </label>
-
-
-                <input
-                    class="upload-input"
-                    id="answerImage"
-                    type="file"
-                    accept="image/png"
-                    onchange="
-                        showFileName(
-                            'answerImage',
-                            'answerFileName'
-                        )
-                    "
-                >
-
-
-                <div
-                    id="answerFileName"
-                    class="file-name"
-                >
-                    Nie wybrano zdjęcia
-                </div>
-
-            </div>
-
-
-            <button
-                class="primary"
-                onclick="
-                    submitAnswer(
-                        ${question.id}
+            <input
+                class="upload-input"
+                id="answerImage"
+                type="file"
+                accept="image/png"
+                onchange="
+                    showFileName(
+                        'answerImage',
+                        'answerFileName'
                     )
                 "
             >
 
-                ODPOWIEDZ ANONIMOWO
 
-            </button>
-
+            <div
+                id="answerFileName"
+                class="file-name"
+            >
+                Nie wybrano zdjęcia
+            </div>
 
         </div>
 
-    `;
+
+        <button
+            class="primary"
+            onclick="
+                submitAnswer(
+                    ${question.id}
+                )
+            "
+        >
+
+            ODPOWIEDZ ANONIMOWO
+
+        </button>
 
 
-    document
-    .getElementById(
-        "questionContent"
-    )
-    .innerHTML = html;
+    </div>
+
+`;
+
+
+document
+.getElementById(
+    "questionContent"
+)
+.innerHTML = html;
 
 }
 
-
-
 /* ==================================================
-   LIKE PYTANIA NA STRONIE
+LIKE QUESTION FROM PAGE
 ================================================== */
 
 async function likeQuestionFromPage(
-    questionId
+questionId
 ) {
 
-    const key =
-        "liked-question-" +
-        questionId;
+const key =
+    "liked-question-" +
+    questionId;
 
 
-    if (
-        localStorage.getItem(key)
-    ) {
+if (
+    localStorage.getItem(key)
+) {
 
-        return;
-
-    }
-
-
-    const { data: question } =
-        await supabaseClient
-        .from("questions")
-        .select("likes")
-        .eq(
-            "id",
-            questionId
-        )
-        .single();
-
-
-    if (!question) {
-        return;
-    }
-
-
-    const { error } =
-        await supabaseClient
-        .from("questions")
-        .update({
-
-            likes:
-                (question.likes || 0) + 1
-
-        })
-        .eq(
-            "id",
-            questionId
-        );
-
-
-    if (error) {
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        key,
-        "true"
-    );
-
-
-    openQuestion(
-        questionId
-    );
+    return;
 
 }
 
 
+const { data: question } =
+    await supabaseClient
+    .from("questions")
+    .select("likes")
+    .eq(
+        "id",
+        questionId
+    )
+    .single();
+
+
+if (!question) {
+    return;
+}
+
+
+const { error } =
+    await supabaseClient
+    .from("questions")
+    .update({
+
+        likes:
+            (question.likes || 0) + 1
+
+    })
+    .eq(
+        "id",
+        questionId
+    );
+
+
+if (error) {
+
+    console.error(error);
+
+    return;
+
+}
+
+
+localStorage.setItem(
+    key,
+    "true"
+);
+
+
+openQuestion(
+    questionId
+);
+
+}
 
 /* ==================================================
-   DODAWANIE ODPOWIEDZI
+ADD ANSWER
 ================================================== */
 
 async function submitAnswer(
-    questionId
+questionId
 ) {
 
-    const input =
-        document.getElementById(
-            "answerInput"
-        );
-
-
-    const text =
-        input.value.trim();
-
-
-    if (!text) {
-
-        alert(
-            "Najpierw napisz odpowiedź! 💬"
-        );
-
-        return;
-
-    }
-
-
-    const imageInput =
-        document.getElementById(
-            "answerImage"
-        );
-
-
-    const imageFile =
-        getPNGFile(
-            "answerImage"
-        );
-
-
-    if (
-        imageInput.files.length &&
-        !imageFile
-    ) {
-
-        return;
-
-    }
-
-
-    let imageUrl = null;
-
-
-    if (imageFile) {
-
-        imageUrl =
-            await uploadPNG(
-                imageFile
-            );
-
-
-        if (!imageUrl) {
-
-            return;
-
-        }
-
-    }
-
-
-    const { error } =
-        await supabaseClient
-        .from("answers")
-        .insert({
-
-            question_id:
-                questionId,
-
-            text:
-                text,
-
-            likes:
-                0,
-
-            image_url:
-                imageUrl
-
-        });
-
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Nie udało się dodać odpowiedzi 😭"
-        );
-
-        return;
-
-    }
-
-
-    openQuestion(
-        questionId
+const input =
+    document.getElementById(
+        "answerInput"
     );
+
+
+const text =
+    input.value.trim();
+
+
+if (!text) {
+
+    alert(
+        "Najpierw napisz odpowiedź! 💬"
+    );
+
+    return;
 
 }
 
 
+const imageInput =
+    document.getElementById(
+        "answerImage"
+    );
 
-/* ==================================================
-   LIKE ODPOWIEDZI
-================================================== */
 
-async function likeAnswer(
-    questionId,
-    answerId
+const imageFile =
+    getPNGFile(
+        "answerImage"
+    );
+
+
+if (
+    imageInput.files.length &&
+    !imageFile
 ) {
 
-    const key =
-        "liked-answer-" +
-        answerId;
-
-
-    if (
-        localStorage.getItem(key)
-    ) {
-
-        alert(
-            "Już polubiłeś tę odpowiedź! ❤️"
-        );
-
-        return;
-
-    }
-
-
-    const { data: answer } =
-        await supabaseClient
-        .from("answers")
-        .select("likes")
-        .eq(
-            "id",
-            answerId
-        )
-        .single();
-
-
-    if (!answer) {
-        return;
-    }
-
-
-    const { error } =
-        await supabaseClient
-        .from("answers")
-        .update({
-
-            likes:
-                (answer.likes || 0) + 1
-
-        })
-        .eq(
-            "id",
-            answerId
-        );
-
-
-    if (error) {
-
-        console.error(error);
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        key,
-        "true"
-    );
-
-
-    openQuestion(
-        questionId
-    );
+    return;
 
 }
 
 
-
-/* ==================================================
-   POWRÓT DO PYTAŃ
-================================================== */
-
-function backToQuestions() {
-
-    document
-    .getElementById(
-        "questionPage"
-    )
-    .classList.remove(
-        "active"
-    );
+let imageUrl = null;
 
 
-    document
-    .getElementById(
-        "answers"
-    )
-    .classList.add(
-        "active"
-    );
+if (imageFile) {
 
-
-    document
-    .querySelectorAll(".tab")
-    .forEach(tab => {
-
-        tab.classList.remove(
-            "active"
+    imageUrl =
+        await uploadPNG(
+            imageFile
         );
+
+
+    if (!imageUrl) {
+
+        return;
+
+    }
+
+}
+
+
+const { error } =
+    await supabaseClient
+    .from("answers")
+    .insert({
+
+        question_id:
+            questionId,
+
+        text:
+            text,
+
+        likes:
+            0,
+
+        image_url:
+            imageUrl
 
     });
 
 
-    document
-    .querySelectorAll(".tab")[2]
-    .classList.add(
-        "active"
+if (error) {
+
+    console.error(error);
+
+    alert(
+        "Nie udało się dodać odpowiedzi 😭"
     );
 
-
-    document
-    .getElementById(
-        "plusButton"
-    )
-    .style.display =
-        "none";
-
-
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    loadQuestions(
-        searchInput
-        ?
-        searchInput.value
-        :
-        ""
-    );
+    return;
 
 }
 
 
+openQuestion(
+    questionId
+);
+
+}
 
 /* ==================================================
-   ESCAPE HTML
+LIKE ANSWER
+================================================== */
+
+async function likeAnswer(
+questionId,
+answerId
+) {
+
+const key =
+    "liked-answer-" +
+    answerId;
+
+
+if (
+    localStorage.getItem(key)
+) {
+
+    alert(
+        "Już polubiłeś tę odpowiedź! ❤️"
+    );
+
+    return;
+
+}
+
+
+const { data: answer } =
+    await supabaseClient
+    .from("answers")
+    .select("likes")
+    .eq(
+        "id",
+        answerId
+    )
+    .single();
+
+
+if (!answer) {
+    return;
+
+}
+
+
+const { error } =
+    await supabaseClient
+    .from("answers")
+    .update({
+
+        likes:
+            (answer.likes || 0) + 1
+
+    })
+    .eq(
+        "id",
+        answerId
+    );
+
+
+if (error) {
+
+    console.error(error);
+
+    return;
+
+}
+
+
+localStorage.setItem(
+    key,
+    "true"
+);
+
+
+openQuestion(
+    questionId
+);
+
+}
+
+/* ==================================================
+BACK TO QUESTIONS
+================================================== */
+
+function backToQuestions() {
+
+document
+.getElementById(
+    "questionPage"
+)
+.classList.remove(
+    "active"
+);
+
+
+document
+.getElementById(
+    "answers"
+)
+.classList.add(
+    "active"
+);
+
+
+document
+.querySelectorAll(".tab")
+.forEach(tab => {
+
+    tab.classList.remove(
+        "active"
+    );
+
+});
+
+
+document
+.querySelectorAll(".tab")[2]
+.classList.add(
+    "active"
+);
+
+
+document
+.getElementById(
+    "plusButton"
+)
+.style.display =
+    "none";
+
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+loadQuestions(
+    searchInput
+    ?
+    searchInput.value
+    :
+    ""
+);
+
+}
+
+/* ==================================================
+ESCAPE HTML
 ================================================== */
 
 function escapeHTML(text) {
 
-    const div =
-        document.createElement(
-            "div"
-        );
+const div =
+    document.createElement(
+        "div"
+    );
 
 
-    div.textContent =
-        text || "";
+div.textContent =
+    text || "";
 
 
-    return div.innerHTML;
+return div.innerHTML;
 
 }
 
-
-
 /* ==================================================
-   START
+START
 ================================================== */
 
 loadEvents();
 
 loadQuestions();
 
-</script>
-
-
-</body>
-
-</html>
+</script></body></html>

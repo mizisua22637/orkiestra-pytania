@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Orkiestra Hub 🎺</title><style>
+<!DOCTYPE html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Orkiestra Hub 🎺</title><style>
 
 /* ==================================================
    RESET
@@ -17,6 +14,7 @@ html {
 
 body {
     margin: 0;
+    min-height: 100vh;
 
     font-family:
         -apple-system,
@@ -25,27 +23,20 @@ body {
         Arial,
         sans-serif;
 
+    color: #294238;
+
     background:
         radial-gradient(
-            circle at 10% 0%,
-            rgba(170,198,181,.28),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 100% 20%,
-            rgba(214,228,218,.32),
-            transparent 30%
+            circle at top left,
+            #e5eee7 0%,
+            transparent 35%
         ),
         linear-gradient(
             180deg,
-            #edf4ef 0%,
-            #f8faf7 42%,
-            #f1f5f1 100%
+            #edf3ee 0%,
+            #f7f8f5 45%,
+            #eef2ee 100%
         );
-
-    color: #294238;
-
-    min-height: 100vh;
 }
 
 
@@ -54,23 +45,20 @@ body {
 ================================================== */
 
 header {
-    position: relative;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            #233c31,
-            #315344 55%,
-            #416553
-        );
 
     color: white;
 
     padding:
-        38px
-        20px
-        34px;
+        34px
+        18px
+        32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #243d33,
+            #3c5d4e
+        );
 
     border-radius:
         0
@@ -79,89 +67,41 @@ header {
         34px;
 
     box-shadow:
-        0 12px 35px rgba(41,66,56,.20);
-}
+        0 10px 35px rgba(41,66,56,.20);
 
-header::before {
-    content: "🎺";
-    position: absolute;
-
-    right: 22px;
-    top: 18px;
-
-    font-size: 65px;
-
-    opacity: .10;
-
-    transform: rotate(12deg);
-}
-
-header::after {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    right: -80px;
-    bottom: -100px;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.07);
 }
 
 .header-inner {
-    max-width: 650px;
+
+    max-width: 680px;
+
     margin: auto;
 
-    position: relative;
-    z-index: 2;
-}
-
-.header-badge {
-    display: inline-flex;
-
-    align-items: center;
-    gap: 6px;
-
-    padding: 6px 10px;
-
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.12);
-
-    border: 1px solid rgba(255,255,255,.10);
-
-    font-size: 11px;
-    font-weight: 700;
-
-    margin-bottom: 12px;
-
-    backdrop-filter: blur(8px);
 }
 
 header h1 {
+
     margin: 0;
 
     font-size: 30px;
 
-    letter-spacing: -1px;
+    letter-spacing: -.8px;
 
-    line-height: 1.1;
 }
 
 header p {
-    margin: 9px 0 0;
 
-    opacity: .76;
+    margin:
+        8px
+        0
+        0;
 
     font-size: 14px;
 
-    line-height: 1.55;
+    line-height: 1.5;
 
-    max-width: 440px;
+    opacity: .78;
+
 }
 
 
@@ -170,40 +110,48 @@ header p {
 ================================================== */
 
 main {
-    max-width: 650px;
+
+    max-width: 680px;
 
     margin: auto;
 
     padding:
         18px
-        15px
-        115px;
+        14px
+        110px;
+
 }
 
 
 /* ==================================================
-   TABS
+   TABS — SEPARATED AND CLEAR
 ================================================== */
 
 .tabs {
-    display: flex;
 
-    gap: 4px;
+    display: grid;
 
-    background:
-        rgba(255,255,255,.88);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    padding: 6px;
+    gap: 7px;
 
-    border-radius: 23px;
+    padding: 7px;
 
     margin-bottom: 22px;
 
-    box-shadow:
-        0 7px 25px rgba(41,66,56,.09);
+    background:
+        rgba(255,255,255,.90);
 
     border:
-        1px solid rgba(41,66,56,.05);
+        1px solid
+        rgba(41,66,56,.07);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(41,66,56,.10);
 
     position: sticky;
 
@@ -213,63 +161,118 @@ main {
 
     backdrop-filter:
         blur(14px);
+
 }
 
+
+/* Individual tab */
+
 .tab {
-    flex: 1;
+
+    min-height: 64px;
 
     border: 0;
 
-    background: transparent;
-
-    padding:
-        11px
-        5px;
-
     border-radius: 18px;
 
-    cursor: pointer;
+    background:
+        transparent;
 
-    color: #718078;
+    color:
+        #718078;
 
-    font-size: 12px;
+    font-size: 13px;
 
-    font-weight: 650;
+    font-weight: 700;
 
     line-height: 1.35;
 
+    cursor: pointer;
+
     transition:
-        all .18s ease;
+        background .2s ease,
+        color .2s ease,
+        transform .15s ease,
+        box-shadow .2s ease;
+
 }
+
+
+/* Hover */
 
 .tab:hover {
-    background: #f1f5f2;
 
-    color: #3b5549;
+    background:
+        #f0f4f1;
+
+    color:
+        #456253;
+
 }
 
-.tab:active {
-    transform: scale(.95);
-}
+
+/* Active */
 
 .tab.active {
+
+    color:
+        #294238;
+
     background:
         linear-gradient(
-            135deg,
-            #dceae0,
-            #e8f0e9
+            145deg,
+            #dce9df,
+            #cfdfd4
         );
 
-    color: #294238;
-
-    font-weight: 800;
-
     box-shadow:
-        inset 0 0 0 1px
-        rgba(41,66,56,.05),
+        0 4px 12px
+        rgba(41,66,56,.13);
 
-        0 2px 7px
-        rgba(41,66,56,.05);
+}
+
+
+/* Different active tab accents */
+
+.tab:nth-child(1).active {
+
+    background:
+        linear-gradient(
+            145deg,
+            #dce9df,
+            #cfe1d4
+        );
+
+}
+
+.tab:nth-child(2).active {
+
+    background:
+        linear-gradient(
+            145deg,
+            #e0ebe3,
+            #d1e3d7
+        );
+
+}
+
+.tab:nth-child(3).active {
+
+    background:
+        linear-gradient(
+            145deg,
+            #e3ece5,
+            #d2e1d8
+        );
+
+}
+
+
+.tab:active {
+
+    transform:
+        scale(.96);
+
 }
 
 
@@ -278,27 +281,83 @@ main {
 ================================================== */
 
 .section {
+
     display: none;
 
-    animation:
-        fadeIn .22s ease;
 }
 
 .section.active {
+
     display: block;
+
+    animation:
+        sectionIn .22s ease;
+
 }
 
-@keyframes fadeIn {
+
+@keyframes sectionIn {
 
     from {
+
         opacity: 0;
-        transform: translateY(7px);
+
+        transform:
+            translateY(7px);
+
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
+}
+
+
+/* ==================================================
+   SECTION HEADER
+================================================== */
+
+.section-heading {
+
+    margin:
+        0
+        0
+        14px;
+
+    padding:
+        3px
+        4px;
+
+}
+
+.section-heading h2 {
+
+    margin: 0;
+
+    font-size: 21px;
+
+    letter-spacing:
+        -.3px;
+
+}
+
+.section-heading p {
+
+    margin:
+        4px
+        0
+        0;
+
+    color:
+        #78857e;
+
+    font-size: 13px;
 
 }
 
@@ -312,67 +371,49 @@ main {
 .search-card {
 
     background:
-        rgba(255,255,255,.94);
+        rgba(255,255,255,.96);
 
     border:
-        1px solid rgba(41,66,56,.055);
+        1px solid
+        rgba(41,66,56,.055);
 
-    border-radius: 24px;
+    border-radius:
+        23px;
 
     box-shadow:
-        0 6px 24px
-        rgba(41,66,56,.065);
+        0 7px 24px
+        rgba(41,66,56,.075);
 
-    backdrop-filter:
-        blur(8px);
 }
 
 .card {
-    padding: 20px;
 
-    margin-bottom: 16px;
+    padding:
+        19px;
+
+    margin-bottom:
+        15px;
+
 }
 
-.card h2 {
-    margin:
-        0
-        0
-        7px;
-
-    font-size: 21px;
-
-    letter-spacing: -.35px;
-}
-
+.card h2,
 .card h3 {
+
     margin-top: 0;
 
-    letter-spacing: -.2px;
 }
 
 .small {
-    color: #75827c;
 
-    font-size: 12px;
+    color:
+        #738078;
 
-    line-height: 1.5;
-}
+    font-size:
+        13px;
 
+    line-height:
+        1.45;
 
-/* ==================================================
-   LABELS
-================================================== */
-
-label {
-    display: block;
-
-    color: #50665b;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    margin-top: 10px;
 }
 
 
@@ -389,162 +430,197 @@ textarea {
         14px
         15px;
 
-    margin-top: 8px;
-
-    margin-bottom: 12px;
+    margin:
+        8px
+        0
+        12px;
 
     border:
-        2px solid #e3eae5;
+        2px solid
+        #e1e8e3;
 
-    border-radius: 16px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    color: #294238;
+    border-radius:
+        16px;
 
     background:
         #fafcf9;
 
-    outline: none;
+    color:
+        #294238;
+
+    font-family:
+        inherit;
+
+    font-size:
+        15px;
+
+    outline:
+        none;
 
     transition:
         border .2s ease,
         box-shadow .2s ease,
-        background .2s ease,
-        transform .15s ease;
-}
+        background .2s ease;
 
-input::placeholder,
-textarea::placeholder {
-    color: #a0aaa5;
-}
-
-input:hover,
-textarea:hover {
-    border-color: #d4e0d7;
 }
 
 input:focus,
 textarea:focus {
 
-    border-color:
-        #8eae9b;
+    background:
+        white;
 
-    background: white;
+    border-color:
+        #91ae9b;
 
     box-shadow:
         0 0 0 4px
-        rgba(142,174,155,.13);
+        rgba(145,174,155,.15);
+
 }
 
 textarea {
 
-    min-height: 120px;
+    min-height:
+        120px;
 
-    resize: vertical;
+    resize:
+        vertical;
 
-    line-height: 1.5;
 }
 
 
 /* ==================================================
-   PRIMARY BUTTON
+   LABELS
+================================================== */
+
+label {
+
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    color:
+        #456253;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* ==================================================
+   BUTTONS
 ================================================== */
 
 .primary {
 
-    width: 100%;
+    width:
+        100%;
 
-    border: 0;
+    border:
+        0;
+
+    border-radius:
+        16px;
+
+    padding:
+        14px;
+
+    margin-top:
+        7px;
 
     background:
         linear-gradient(
             135deg,
             #294238,
-            #3d6251
+            #426452
         );
 
-    color: white;
+    color:
+        white;
 
-    padding: 15px;
+    font-weight:
+        800;
 
-    border-radius: 16px;
+    font-size:
+        14px;
 
-    font-weight: 800;
-
-    font-size: 13px;
-
-    letter-spacing: .15px;
-
-    cursor: pointer;
-
-    margin-top: 8px;
+    cursor:
+        pointer;
 
     box-shadow:
-        0 7px 18px
-        rgba(41,66,56,.19);
+        0 6px 16px
+        rgba(41,66,56,.20);
 
     transition:
         transform .15s ease,
-        box-shadow .15s ease,
-        filter .15s ease;
+        box-shadow .15s ease;
+
 }
 
 .primary:hover {
-    filter: brightness(1.04);
 
     box-shadow:
-        0 9px 22px
-        rgba(41,66,56,.22);
+        0 8px 20px
+        rgba(41,66,56,.25);
+
 }
 
 .primary:active {
 
     transform:
-        translateY(1px)
-        scale(.985);
+        scale(.98);
 
-    box-shadow:
-        0 3px 9px
-        rgba(41,66,56,.15);
 }
-
-
-/* ==================================================
-   SECONDARY BUTTON
-================================================== */
 
 .secondary {
 
-    border: 0;
+    border:
+        0;
 
-    background:
-        #e7eee9;
-
-    color: #365246;
+    border-radius:
+        14px;
 
     padding:
         10px
         15px;
 
-    border-radius: 14px;
+    background:
+        #e3ebe5;
 
-    cursor: pointer;
+    color:
+        #294238;
 
-    font-weight: 700;
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
 
     transition:
-        all .15s ease;
+        transform .15s ease,
+        background .15s ease;
+
 }
 
 .secondary:hover {
-    background: #dce8df;
+
+    background:
+        #d8e4dc;
+
 }
 
 .secondary:active {
-    transform: scale(.96);
+
+    transform:
+        scale(.96);
+
 }
 
 
@@ -554,34 +630,19 @@ textarea {
 
 .search-card {
 
-    padding: 19px;
+    padding:
+        18px;
 
-    margin-bottom: 16px;
+    margin-bottom:
+        16px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.97),
-            rgba(247,250,247,.96)
+            rgba(255,255,255,.98),
+            rgba(245,249,246,.98)
         );
-}
 
-.search-icon {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 38px;
-    height: 38px;
-
-    border-radius: 13px;
-
-    background: #e6efe8;
-
-    font-size: 19px;
-
-    margin-bottom: 9px;
 }
 
 .search-card h2 {
@@ -589,98 +650,18 @@ textarea {
     margin:
         0
         0
-        4px;
+        5px;
 
-    font-size: 20px;
+    font-size:
+        19px;
+
 }
 
 .search-card p {
 
     margin:
-        0
-        0
-        10px;
-}
+        0;
 
-#searchInput {
-    margin-bottom: 0;
-}
-
-
-/* ==================================================
-   EVENTS
-================================================== */
-
-.event-card {
-    position: relative;
-
-    overflow: hidden;
-}
-
-.event-date {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    background: #e9f1eb;
-
-    color: #52705f;
-
-    padding:
-        6px
-        10px;
-
-    border-radius: 999px;
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    margin-bottom: 10px;
-}
-
-.event-title {
-    margin:
-        0
-        0
-        8px;
-
-    font-size: 19px;
-
-    line-height: 1.25;
-}
-
-.event-description {
-    color: #50625a;
-
-    font-size: 14px;
-
-    line-height: 1.55;
-
-    white-space: pre-wrap;
-}
-
-.event-location {
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    margin-top: 12px;
-
-    padding-top: 11px;
-
-    border-top:
-        1px solid #edf1ed;
-
-    color: #63756c;
-
-    font-size: 13px;
-
-    font-weight: 600;
 }
 
 
@@ -690,115 +671,60 @@ textarea {
 
 .question-card {
 
-    padding: 19px;
+    padding:
+        18px;
 
-    margin-bottom: 15px;
+    margin-bottom:
+        15px;
 
     transition:
-        transform .16s ease,
-        box-shadow .16s ease;
+        transform .15s ease,
+        box-shadow .15s ease;
+
 }
 
 .question-card:hover {
 
-    transform:
-        translateY(-1px);
-
     box-shadow:
-        0 9px 28px
-        rgba(41,66,56,.09);
+        0 10px 28px
+        rgba(41,66,56,.10);
+
 }
 
 .question-card:active {
 
     transform:
         scale(.992);
+
 }
 
 .question-title {
 
-    font-size: 17px;
+    margin-top:
+        6px;
 
-    font-weight: 750;
+    font-size:
+        17px;
 
-    line-height: 1.5;
+    font-weight:
+        750;
 
-    margin-top: 6px;
+    line-height:
+        1.45;
 
-    color: #294238;
 }
 
 .question-meta {
 
-    color: #78857e;
-
-    font-size: 12px;
-
-    margin-top: 9px;
-}
-
-.anonymous-badge {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    color: #708078;
-
-    font-size: 11px;
-
-    font-weight: 650;
-}
-
-
-/* ==================================================
-   LIKES
-================================================== */
-
-.like-button {
-
-    border: 0;
-
-    background:
-        #f0f4f1;
-
-    color: #496156;
-
-    padding:
-        9px
-        13px;
-
-    border-radius: 13px;
-
-    cursor: pointer;
-
-    margin-top: 12px;
-
-    font-weight: 700;
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-}
-
-.like-button:hover {
-    background: #e8eeea;
-}
-
-.like-button:active {
-
-    transform:
-        scale(.91);
-}
-
-.like-button.liked {
-
-    background:
-        #ffe5e9;
+    margin-top:
+        9px;
 
     color:
-        #9a5261;
+        #7a8780;
+
+    font-size:
+        13px;
+
 }
 
 
@@ -808,6 +734,19 @@ textarea {
 
 .answer {
 
+    margin-top:
+        11px;
+
+    padding:
+        15px;
+
+    border:
+        1px solid
+        #e0e9e3;
+
+    border-radius:
+        18px;
+
     background:
         linear-gradient(
             145deg,
@@ -815,194 +754,248 @@ textarea {
             #f7f9f7
         );
 
-    padding: 16px;
-
-    border-radius: 18px;
-
-    margin-top: 11px;
-
-    border:
-        1px solid #e3ebe5;
 }
 
 .answer p {
 
-    line-height: 1.55;
+    line-height:
+        1.55;
 
-    font-size: 14px;
-
-    color: #43584e;
-
-    white-space: pre-wrap;
 }
 
 
 /* ==================================================
-   POST IMAGES
+   LIKES
+================================================== */
+
+.like-button {
+
+    border:
+        0;
+
+    padding:
+        9px
+        13px;
+
+    margin-top:
+        12px;
+
+    border-radius:
+        14px;
+
+    background:
+        #eef3ef;
+
+    color:
+        #355346;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform .15s ease,
+        background .15s ease;
+
+}
+
+.like-button:hover {
+
+    background:
+        #e5eee7;
+
+}
+
+.like-button:active {
+
+    transform:
+        scale(.93);
+
+}
+
+.like-button.liked {
+
+    background:
+        #ffe4e8;
+
+}
+
+
+/* ==================================================
+   IMAGES
 ================================================== */
 
 .post-image {
 
-    width: 100%;
+    display:
+        block;
 
-    max-height: 430px;
+    width:
+        100%;
 
-    object-fit: contain;
+    max-height:
+        430px;
 
-    display: block;
+    object-fit:
+        contain;
 
-    margin-top: 14px;
+    margin-top:
+        14px;
 
-    border-radius: 18px;
+    border:
+        1px solid
+        #dfe7e1;
+
+    border-radius:
+        18px;
 
     background:
         #edf2ee;
 
-    border:
-        1px solid #e0e8e2;
-
-    box-shadow:
-        0 4px 14px
-        rgba(41,66,56,.06);
 }
 
 
 /* ==================================================
-   UPLOAD
+   IMAGE UPLOAD
 ================================================== */
 
 .upload-box {
 
-    margin-top: 10px;
+    margin:
+        8px
+        0
+        12px;
 
-    margin-bottom: 12px;
 }
 
 .upload-label {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    gap: 8px;
+    justify-content:
+        center;
 
-    width: 100%;
+    gap:
+        8px;
 
-    padding: 14px;
+    width:
+        100%;
+
+    padding:
+        13px;
 
     border:
-        2px dashed #b7cbbd;
+        2px dashed
+        #b6cabe;
 
-    border-radius: 16px;
+    border-radius:
+        16px;
 
     background:
-        linear-gradient(
-            135deg,
-            #f5f9f6,
-            #f0f6f1
-        );
+        #f4f8f5;
 
-    color: #456253;
+    color:
+        #456253;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-weight: 750;
+    font-weight:
+        750;
 
     transition:
         background .2s ease,
         border .2s ease,
         transform .15s ease;
+
 }
 
 .upload-label:hover {
 
     background:
-        #eaf2ec;
+        #edf4ef;
 
     border-color:
-        #9db8a5;
+        #91ae9b;
+
 }
 
 .upload-label:active {
 
     transform:
         scale(.98);
+
 }
 
 .upload-input {
 
-    display: none;
+    display:
+        none;
+
 }
 
 .file-name {
 
-    margin-top: 7px;
+    margin-top:
+        7px;
 
-    color: #7a8780;
+    text-align:
+        center;
 
-    font-size: 11px;
+    color:
+        #7b8781;
 
-    text-align: center;
+    font-size:
+        12px;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
-    text-overflow: ellipsis;
+    text-overflow:
+        ellipsis;
 
-    white-space: nowrap;
 }
 
 
 /* ==================================================
-   QUESTION PAGE
+   EVENT CARDS
 ================================================== */
 
-#questionPage .card {
-    margin-top: 15px;
+#eventsList .card {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
 }
 
-.question-page-header {
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: #708078;
-
-    font-size: 12px;
-
-    margin-bottom: 8px;
-}
-
-.question-page-title {
-
-    font-size: 22px;
-
-    line-height: 1.4;
+#eventsList .card h3 {
 
     margin:
-        0
-        0
-        5px;
+        8px
+        0;
 
-    letter-spacing: -.4px;
+    font-size:
+        19px;
+
 }
 
-.answers-heading {
+#eventsList .card p {
 
-    display: flex;
+    line-height:
+        1.55;
 
-    align-items: center;
+    color:
+        #50635a;
 
-    gap: 8px;
-
-    margin-top: 27px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid #e8eee9;
 }
 
 
@@ -1012,61 +1005,75 @@ textarea {
 
 .plus {
 
-    position: fixed;
+    position:
+        fixed;
 
-    right: 20px;
+    right:
+        20px;
 
-    bottom: 24px;
+    bottom:
+        24px;
 
-    width: 63px;
+    width:
+        62px;
 
-    height: 63px;
+    height:
+        62px;
 
-    border-radius: 50%;
+    border:
+        0;
 
-    border: 0;
+    border-radius:
+        50%;
 
     background:
         linear-gradient(
             135deg,
             #294238,
-            #47715b
+            #426553
         );
 
-    color: white;
+    color:
+        white;
 
-    font-size: 31px;
+    font-size:
+        31px;
 
-    line-height: 1;
+    line-height:
+        1;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
-        0 9px 27px
+        0 9px 28px
         rgba(41,66,56,.30);
 
-    z-index: 50;
+    z-index:
+        50;
 
     transition:
-        transform .17s ease,
-        box-shadow .17s ease;
+        transform .15s ease,
+        box-shadow .15s ease;
+
 }
 
 .plus:hover {
 
     transform:
-        translateY(-2px)
-        scale(1.03);
+        translateY(-2px);
 
     box-shadow:
-        0 12px 31px
+        0 12px 32px
         rgba(41,66,56,.34);
+
 }
 
 .plus:active {
 
     transform:
-        scale(.90);
+        scale(.91);
+
 }
 
 
@@ -1076,89 +1083,109 @@ textarea {
 
 .modal {
 
-    display: none;
+    display:
+        none;
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        18px;
 
     background:
-        rgba(22,35,29,.52);
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 18px;
-
-    z-index: 100;
+        rgba(25,39,32,.50);
 
     backdrop-filter:
         blur(6px);
+
+    z-index:
+        100;
+
 }
 
 .modal-box {
 
+    width:
+        100%;
+
+    max-width:
+        510px;
+
+    max-height:
+        90vh;
+
+    overflow-y:
+        auto;
+
+    padding:
+        22px;
+
+    border-radius:
+        26px;
+
     background:
-        rgba(255,255,255,.98);
-
-    width: 100%;
-
-    max-width: 500px;
-
-    padding: 23px;
-
-    border-radius: 27px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
+        white;
 
     box-shadow:
-        0 18px 60px
+        0 20px 60px
         rgba(0,0,0,.23);
 
     animation:
-        modalIn .22s ease;
-}
+        modalIn .2s ease;
 
-.modal-box h2 {
-
-    margin:
-        2px
-        0
-        19px;
-
-    font-size: 21px;
-
-    letter-spacing: -.3px;
 }
 
 @keyframes modalIn {
 
     from {
-        opacity: 0;
+
+        opacity:
+            0;
 
         transform:
-            scale(.95)
+            scale(.96)
             translateY(10px);
+
     }
 
     to {
-        opacity: 1;
+
+        opacity:
+            1;
 
         transform:
             scale(1)
             translateY(0);
+
     }
 
 }
 
 .close {
 
-    float: right;
+    float:
+        right;
 
-    border: 0;
+    width:
+        36px;
+
+    height:
+        36px;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
 
     background:
         #edf2ee;
@@ -1166,27 +1193,12 @@ textarea {
     color:
         #294238;
 
-    width: 36px;
+    font-size:
+        23px;
 
-    height: 36px;
+    cursor:
+        pointer;
 
-    border-radius: 50%;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-}
-
-.close:hover {
-    background: #e2ebe4;
-}
-
-.close:active {
-    transform: scale(.88);
 }
 
 
@@ -1196,63 +1208,55 @@ textarea {
 
 .empty {
 
-    text-align: center;
-
     padding:
-        48px
+        50px
         20px;
 
-    color:
-        #78857e;
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(41,66,56,.05);
+
+    border-radius:
+        23px;
 
     background:
         rgba(255,255,255,.72);
 
-    border:
-        1px solid rgba(41,66,56,.045);
+    color:
+        #78857e;
 
-    border-radius: 24px;
-
-    box-shadow:
-        0 5px 18px
-        rgba(41,66,56,.045);
 }
 
 .empty-icon {
 
-    font-size: 43px;
+    margin-bottom:
+        8px;
 
-    margin-bottom: 8px;
+    font-size:
+        43px;
 
-    filter:
-        drop-shadow(
-            0 3px 5px
-            rgba(41,66,56,.08)
-        );
-}
-
-.empty p {
-    margin:
-        0;
-
-    font-size: 14px;
 }
 
 
 /* ==================================================
-   DIVIDERS
+   QUESTION PAGE
 ================================================== */
 
-.soft-divider {
+#questionPage > .secondary {
 
-    height: 1px;
+    margin-bottom:
+        2px;
 
-    background:
-        #e9eee9;
+}
 
-    margin:
-        18px
-        0;
+#questionContent {
+
+    margin-top:
+        15px;
+
 }
 
 
@@ -1263,61 +1267,82 @@ textarea {
 @media (max-width: 480px) {
 
     header {
+
         padding:
-            31px
-            17px
-            29px;
+            29px
+            16px
+            28px;
+
+        border-radius:
+            0
+            0
+            28px
+            28px;
+
     }
 
     header h1 {
-        font-size: 26px;
-    }
 
-    header p {
-        font-size: 13px;
+        font-size:
+            26px;
+
     }
 
     main {
+
         padding:
             14px
             11px
             105px;
+
     }
 
     .tabs {
-        top: 6px;
 
-        border-radius: 21px;
+        top:
+            6px;
+
+        gap:
+            5px;
+
+        padding:
+            5px;
+
+        border-radius:
+            20px;
+
     }
 
     .tab {
-        font-size: 11px;
 
-        padding:
-            10px
-            3px;
+        min-height:
+            59px;
+
+        font-size:
+            12px;
+
+        border-radius:
+            16px;
+
     }
 
     .card,
     .question-card,
     .search-card {
-        border-radius: 21px;
-    }
 
-    .card {
-        padding: 17px;
-    }
+        border-radius:
+            20px;
 
-    .question-card {
-        padding: 17px;
     }
 
     .plus {
-        right: 17px;
-        bottom: 19px;
 
-        width: 59px;
-        height: 59px;
+        right:
+            16px;
+
+        bottom:
+            18px;
+
     }
 
 }
@@ -1333,26 +1358,20 @@ textarea {
     *::before,
     *::after {
 
-        animation-duration: .01ms !important;
+        animation-duration:
+            .01ms !important;
 
-        animation-iteration-count: 1 !important;
+        transition-duration:
+            .01ms !important;
 
-        transition-duration: .01ms !important;
-
-        scroll-behavior: auto !important;
     }
 
 }
 
 </style></head><body><!-- ==================================================
      HEADER
-================================================== --><header><div class="header-inner"><div class="header-badge">
-    🎺 NASZA ORKIESTRA
-</div><h1>
-    Orkiestra Hub
-</h1><p>
-    Wszystko, czego potrzebujemy,
-    w jednym miejscu. 🌿
+================================================== --><header><div class="header-inner"><h1>🎺 Orkiestra Hub</h1><p>
+Wszystko, czego potrzebujemy w jednym miejscu.
 </p></div></header><main><!-- ==================================================
      TABS
 ================================================== --><div class="tabs"><button
@@ -1390,19 +1409,23 @@ Odpowiedzi
 ================================================== --><section
 id="events"
 class="section active"
-><div id="eventsList"><div class="empty"><div class="empty-icon">
-    📅
+><div class="section-heading"><h2>📅 Wydarzenia</h2><p>
+Co się dzieje w naszej orkiestrze?
+</p></div><div id="eventsList"><div class="empty"><div class="empty-icon">
+📅
 </div><p>
-    Ładowanie wydarzeń...
+Ładowanie wydarzeń...
 </p></div></div></section><!-- ==================================================
      ASK
 ================================================== --><section
 id="ask"
 class="section"
-><div class="card"><h2>
-    💬 Zadaj anonimowe pytanie
+><div class="section-heading"><h2>💬 Zapytaj</h2><p>
+Masz pytanie? Możesz zadać je anonimowo.
+</p></div><div class="card"><h2>
+💬 Zadaj anonimowe pytanie
 </h2><p class="small">
-    Bez konta. Bez imienia. Bez wstydu. 💚
+Bez konta. Bez imienia. Bez wstydu.
 </p><textarea
 id="questionInput"
 placeholder="O co chcesz zapytać?"
@@ -1420,7 +1443,12 @@ class="upload-input"
 id="questionImage"
 type="file"
 accept="image/png"
-onchange="showFileName('questionImage','questionFileName')"
+onchange="
+showFileName(
+'questionImage',
+'questionFileName'
+)
+"
 
 «»
 
@@ -1443,13 +1471,12 @@ ZAPYTAJ ANONIMOWO
 ================================================== --><section
 id="answers"
 class="section"
-><div class="search-card"><div class="search-icon">
-    🔍
-</div><h2>
-    Szukaj pytań
+><div class="section-heading"><h2>💡 Odpowiedzi</h2><p>
+Przeglądaj pytania i odpowiadaj innym.
+</p></div><div class="search-card"><h2>
+🔍 Szukaj pytań
 </h2><p class="small">
-    Znajdź pytania dotyczące tego,
-    czego szukasz.
+Znajdź pytania dotyczące tego, czego szukasz.
 </p><input
 id="searchInput"
 type="text"
@@ -1459,9 +1486,9 @@ oninput="searchQuestions()"
 «»
 
 </div><div id="questionsList"><div class="empty"><div class="empty-icon">
-    💡
+💡
 </div><p>
-    Ładowanie pytań...
+Ładowanie pytań...
 </p></div></div></section><!-- ==================================================
      QUESTION PAGE
 ================================================== --><section
@@ -1557,7 +1584,12 @@ class="upload-input"
 id="eventImage"
 type="file"
 accept="image/png"
-onchange="showFileName('eventImage','eventFileName')"
+onchange="
+showFileName(
+'eventImage',
+'eventFileName'
+)
+"
 
 «»
 
@@ -1673,6 +1705,7 @@ function getPNGFile(inputId) {
 
     const input =
         document.getElementById(inputId);
+
 
     if (
         !input ||
@@ -1816,12 +1849,10 @@ function showFileName(
 async function uploadPNG(file) {
 
     if (!file) {
+
         return null;
+
     }
-
-
-    const extension =
-        "png";
 
 
     const randomName =
@@ -1832,8 +1863,7 @@ async function uploadPNG(file) {
         Date.now() +
         "-" +
         randomName +
-        "." +
-        extension;
+        ".png";
 
 
     const { error } =
@@ -2152,7 +2182,7 @@ async function loadEvents() {
 
 
         card.className =
-            "card event-card";
+            "card";
 
 
         let imageHTML = "";
@@ -2176,7 +2206,7 @@ async function loadEvents() {
 
         card.innerHTML = `
 
-            <div class="event-date">
+            <div class="small">
 
                 📆 ${escapeHTML(event.date)}
 
@@ -2192,7 +2222,7 @@ async function loadEvents() {
             </div>
 
 
-            <h3 class="event-title">
+            <h3>
 
                 🎵 ${escapeHTML(event.name)}
 
@@ -2202,9 +2232,9 @@ async function loadEvents() {
             ${
                 event.description
                 ?
-                `<div class="event-description">
+                `<p>
                     ${escapeHTML(event.description)}
-                </div>`
+                </p>`
                 :
                 ""
             }
@@ -2213,7 +2243,7 @@ async function loadEvents() {
             ${
                 event.location
                 ?
-                `<div class="event-location">
+                `<div class="small">
                     📍 ${escapeHTML(event.location)}
                 </div>`
                 :
@@ -2332,7 +2362,6 @@ async function submitQuestion() {
 
 
     input.value = "";
-
 
     imageInput.value = "";
 
@@ -2558,7 +2587,7 @@ async function loadQuestions(
                 style="cursor:pointer;"
             >
 
-                <div class="anonymous-badge">
+                <div class="small">
                     💬 Anonimowo
                 </div>
 
@@ -2622,7 +2651,9 @@ function searchQuestions() {
 
 
     if (!input) {
+
         return;
+
     }
 
 
@@ -2676,7 +2707,9 @@ async function likeQuestion(
 
 
     if (!question) {
+
         return;
+
     }
 
 
@@ -2750,7 +2783,9 @@ async function openQuestion(
 
 
     if (!question) {
+
         return;
+
     }
 
 
@@ -2812,12 +2847,12 @@ async function openQuestion(
 
         <div class="card">
 
-            <div class="question-page-header">
+            <div class="small">
                 💬 Anonimowo
             </div>
 
 
-            <h2 class="question-page-title">
+            <h2>
 
                 ${escapeHTML(
                     question.text
@@ -2843,10 +2878,10 @@ async function openQuestion(
             </button>
 
 
-            <h3 class="answers-heading">
-
+            <h3
+                style="margin-top:25px;"
+            >
                 💡 Odpowiedzi
-
             </h3>
 
     `;
@@ -2897,7 +2932,7 @@ async function openQuestion(
 
                 <div class="answer">
 
-                    <div class="anonymous-badge">
+                    <div class="small">
                         💬 Anonimowo
                     </div>
 
@@ -3037,7 +3072,9 @@ const { data: question } =
 
 
 if (!question) {
+
     return;
+
 }
 
 
@@ -3226,6 +3263,7 @@ const { data: answer } =
 
 
 if (!answer) {
+
     return;
 
 }

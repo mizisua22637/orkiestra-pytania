@@ -309,35 +309,23 @@ textarea {
 
 .search-card {
     background: white;
-    padding: 15px;
+    padding: 18px;
     border-radius: 20px;
     margin-bottom: 15px;
     box-shadow: 0 3px 12px rgba(0,0,0,.06);
 }
 
-.search-card h3 {
+.search-card h2 {
     margin-top: 0;
     margin-bottom: 5px;
 }
 
-#searchInput {
-    margin-bottom: 0;
+.search-card p {
+    margin-top: 0;
 }
 
-
-/* =========================
-   USUWANIE
-========================= */
-
-.delete-button {
-    border: 0;
-    background: #f5e5e5;
-    color: #8a3838;
-    padding: 8px 12px;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-top: 12px;
-    margin-left: 5px;
+#searchInput {
+    margin-bottom: 0;
 }
 
 </style>
@@ -479,11 +467,13 @@ class="section"
 >
 
 
+<!-- WYSZUKIWANIE -->
+
 <div class="search-card">
 
-<h3>
+<h2>
 🔍 Szukaj pytań
-</h3>
+</h2>
 
 <p class="small">
 Znajdź pytania dotyczące tego, czego szukasz.
@@ -498,6 +488,8 @@ oninput="searchQuestions()"
 
 </div>
 
+
+<!-- LISTA PYTAŃ -->
 
 <div id="questionsList">
 
@@ -1017,20 +1009,6 @@ list.appendChild(card);
 
 /*
 ====================================================
-GENEROWANIE KODU USUWANIA
-====================================================
-*/
-
-function generateDeleteCode() {
-
-return crypto.randomUUID();
-
-}
-
-
-
-/*
-====================================================
 DODAWANIE PYTANIA
 ====================================================
 */
@@ -1059,10 +1037,6 @@ return;
 }
 
 
-const deleteCode =
-generateDeleteCode();
-
-
 const { error } =
 await supabaseClient
 .from("questions")
@@ -1070,10 +1044,7 @@ await supabaseClient
 
 text: text,
 
-likes: 0,
-
-delete_code:
-deleteCode
+likes: 0
 
 });
 
@@ -1094,23 +1065,6 @@ return;
 input.value = "";
 
 
-/*
-Jeśli użytkownik ma aktywne wyszukiwanie,
-czyścimy je przed pokazaniem nowego pytania.
-*/
-
-const searchInput =
-document.getElementById(
-"searchInput"
-);
-
-if (searchInput) {
-
-searchInput.value = "";
-
-}
-
-
 await loadQuestions();
 
 
@@ -1118,11 +1072,7 @@ showAnswersTab();
 
 
 alert(
-"Twoje pytanie zostało dodane anonimowo! 💚\n\n" +
-"🔐 TWÓJ KOD USUWANIA:\n\n" +
-deleteCode +
-"\n\nZapisz go w bezpiecznym miejscu!\n" +
-"Bez tego kodu nie będzie można usunąć pytania."
+"Twoje pytanie zostało dodane anonimowo! 💚"
 );
 
 }
@@ -1200,7 +1150,6 @@ ascending: false
 
 
 if (
-searchText &&
 searchText.trim()
 ) {
 
@@ -1266,11 +1215,15 @@ list.innerHTML = `
 </div>
 
 <p>
+
 ${
-searchText
-? "Nie znaleziono pytań."
-: "Nie ma jeszcze żadnych pytań!"
+searchText.trim()
+?
+"Nie znaleziono pytań."
+:
+"Nie ma jeszcze żadnych pytań!"
 }
+
 </p>
 
 </div>
@@ -1332,16 +1285,6 @@ onclick="likeQuestion(event, ${question.id})"
 
 </button>
 
-
-<button
-class="delete-button"
-onclick="deleteQuestion(event, ${question.id})"
->
-
-🗑️ Usuń
-
-</button>
-
 `;
 
 
@@ -1355,7 +1298,7 @@ list.appendChild(card);
 
 /*
 ====================================================
-WYSZUKIWANIE
+WYSZUKIWANIE PYTAŃ
 ====================================================
 */
 
@@ -1447,96 +1390,6 @@ return;
 localStorage.setItem(
 key,
 "true"
-);
-
-
-const searchInput =
-document.getElementById(
-"searchInput"
-);
-
-
-loadQuestions(
-searchInput
-? searchInput.value
-: ""
-);
-
-}
-
-
-
-/*
-====================================================
-USUWANIE PYTANIA
-====================================================
-*/
-
-async function deleteQuestion(
-event,
-questionId
-) {
-
-
-event.stopPropagation();
-
-
-const code =
-prompt(
-"🔐 Podaj kod usuwania tego pytania:"
-);
-
-
-if (!code) return;
-
-
-const confirmed =
-confirm(
-"Czy na pewno chcesz usunąć to pytanie?"
-);
-
-
-if (!confirmed) return;
-
-
-const { data, error } =
-await supabaseClient
-.from("questions")
-.delete()
-.eq("id", questionId)
-.eq("delete_code", code)
-.select("id");
-
-
-if (error) {
-
-console.error(error);
-
-alert(
-"Nie udało się usunąć pytania 😭"
-);
-
-return;
-
-}
-
-
-if (
-!data ||
-data.length === 0
-) {
-
-alert(
-"❌ Nieprawidłowy kod usuwania."
-);
-
-return;
-
-}
-
-
-alert(
-"🗑️ Pytanie zostało usunięte!"
 );
 
 

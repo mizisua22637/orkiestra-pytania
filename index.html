@@ -2,54 +2,58 @@
 <html lang="pl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Orkiestra Hub 🎺</title>
 
-
 <style>
-
-/* =========================
-   PODSTAWOWY WYGLĄD
-========================= */
 
 * {
     box-sizing: border-box;
 }
 
+:root {
+    --green: #294238;
+    --green-light: #dce7df;
+    --green-soft: #eef3ef;
+    --background: #f3f5f1;
+    --text: #294238;
+    --muted: #78857e;
+    --white: #ffffff;
+    --danger: #8a3838;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f3f5f1;
-    color: #294238;
+    background: var(--background);
+    color: var(--text);
 }
 
 header {
-    background: #294238;
+    background: var(--green);
     color: white;
-    padding: 25px 20px;
-    border-radius: 0 0 25px 25px;
+    padding: 28px 20px 30px;
+    border-radius: 0 0 28px 28px;
 }
 
 header h1 {
     margin: 0;
+    font-size: 27px;
 }
 
 header p {
-    margin: 6px 0 0;
-    opacity: .75;
+    margin: 7px 0 0;
+    opacity: .78;
+    font-size: 14px;
 }
 
 main {
-    max-width: 650px;
+    max-width: 680px;
     margin: auto;
-    padding: 20px 15px 100px;
+    padding: 18px 15px 110px;
 }
-
 
 /* =========================
    ZAKŁADKI
@@ -59,26 +63,27 @@ main {
     display: flex;
     background: white;
     padding: 5px;
-    border-radius: 18px;
+    border-radius: 19px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.05);
 }
 
 .tab {
     flex: 1;
     border: 0;
     background: transparent;
-    padding: 12px 5px;
-    border-radius: 14px;
+    padding: 11px 5px;
+    border-radius: 15px;
     cursor: pointer;
-    color: #294238;
-    font-size: 14px;
+    color: var(--green);
+    font-size: 13px;
+    transition: .2s;
 }
 
 .tab.active {
-    background: #dce7df;
+    background: var(--green-light);
     font-weight: bold;
 }
-
 
 /* =========================
    SEKCJE
@@ -92,17 +97,17 @@ main {
     display: block;
 }
 
-
 /* =========================
    KARTY
 ========================= */
 
-.card {
+.card,
+.question-card {
     background: white;
-    padding: 18px;
-    border-radius: 20px;
+    padding: 19px;
+    border-radius: 21px;
     margin-bottom: 15px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+    box-shadow: 0 4px 16px rgba(0,0,0,.055);
 }
 
 .card h2,
@@ -111,13 +116,23 @@ main {
 }
 
 .small {
-    color: #708078;
+    color: var(--muted);
     font-size: 13px;
 }
 
+.empty {
+    text-align: center;
+    padding: 45px 20px;
+    color: var(--muted);
+}
+
+.empty-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
 
 /* =========================
-   POLA TEKSTOWE
+   INPUTY
 ========================= */
 
 input,
@@ -127,9 +142,17 @@ textarea {
     margin-top: 8px;
     margin-bottom: 12px;
     border: 2px solid #e1e7e2;
-    border-radius: 13px;
+    border-radius: 14px;
     font-family: inherit;
     font-size: 15px;
+    color: var(--text);
+    background: white;
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #a9beb1;
 }
 
 textarea {
@@ -137,6 +160,10 @@ textarea {
     resize: vertical;
 }
 
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
 
 /* =========================
    PRZYCISKI
@@ -145,47 +172,71 @@ textarea {
 .primary {
     width: 100%;
     border: 0;
-    background: #294238;
+    background: var(--green);
     color: white;
     padding: 14px;
     border-radius: 14px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .secondary {
     border: 0;
     background: #e5ece7;
+    color: var(--green);
     padding: 10px 14px;
     border-radius: 12px;
     cursor: pointer;
 }
 
+.primary:active,
+.secondary:active,
+.like-button:active,
+.plus:active {
+    transform: scale(.97);
+}
+
+/* =========================
+   WYSZUKIWANIE
+========================= */
+
+.search-box {
+    background: white;
+    padding: 15px;
+    border-radius: 19px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.05);
+}
+
+.search-box input {
+    margin: 0;
+}
 
 /* =========================
    PYTANIA
 ========================= */
 
 .question-card {
-    background: white;
-    padding: 18px;
-    border-radius: 20px;
-    margin-bottom: 15px;
+    cursor: default;
 }
 
 .question-title {
     font-size: 17px;
     font-weight: bold;
-    line-height: 1.4;
+    line-height: 1.45;
+    margin-top: 8px;
 }
 
 .question-meta {
-    color: #78857e;
+    color: var(--muted);
     font-size: 13px;
     margin-top: 8px;
 }
 
+.question-click {
+    cursor: pointer;
+}
 
 /* =========================
    SERDUSZKA
@@ -198,12 +249,12 @@ textarea {
     border-radius: 12px;
     cursor: pointer;
     margin-top: 12px;
+    color: var(--text);
 }
 
 .like-button.liked {
     background: #ffe4e8;
 }
-
 
 /* =========================
    ODPOWIEDZI
@@ -216,50 +267,73 @@ textarea {
     margin-top: 10px;
 }
 
+.answer-image,
+.post-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-top: 12px;
+    background: #eef1ee;
+}
 
 /* =========================
-   PRZYCISK +
+   ZAŁĄCZNIK
+========================= */
+
+.file-label {
+    display: block;
+    background: #eef3ef;
+    padding: 12px;
+    border-radius: 13px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 8px;
+    color: var(--green);
+    font-weight: bold;
+}
+
+.file-label input {
+    display: none;
+}
+
+.file-name {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 7px;
+}
+
+/* =========================
+   PLUS
 ========================= */
 
 .plus {
     position: fixed;
     right: 20px;
     bottom: 25px;
-
     width: 60px;
     height: 60px;
-
     border-radius: 50%;
     border: 0;
-
-    background: #294238;
+    background: var(--green);
     color: white;
-
     font-size: 30px;
-
     cursor: pointer;
-
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
 }
 
-
 /* =========================
-   OKNO DODAWANIA WYDARZENIA
+   MODAL
 ========================= */
 
 .modal {
     display: none;
-
     position: fixed;
     inset: 0;
-
     background: rgba(0,0,0,.45);
-
     align-items: center;
     justify-content: center;
-
     padding: 20px;
-
     z-index: 100;
 }
 
@@ -267,78 +341,55 @@ textarea {
     background: white;
     width: 100%;
     max-width: 500px;
-
     padding: 22px;
-
     border-radius: 22px;
-
     max-height: 90vh;
     overflow-y: auto;
 }
 
 .close {
     float: right;
-
     border: 0;
     background: transparent;
-
     font-size: 25px;
-
     cursor: pointer;
 }
 
-
 /* =========================
-   PUSTE SEKCJE
+   WYDARZENIA
 ========================= */
 
-.empty {
+.event-date {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.event-title {
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.event-info {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
     text-align: center;
-    padding: 45px 20px;
-    color: #78857e;
-}
-
-.empty-icon {
-    font-size: 42px;
-}
-
-
-/* =========================
-   WYSZUKIWANIE
-========================= */
-
-.search-card {
-    background: white;
-    padding: 18px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.06);
-}
-
-.search-card h2 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.search-card p {
-    margin-top: 0;
-}
-
-#searchInput {
-    margin-bottom: 0;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     NAGŁÓWEK
-========================= -->
 
 <header>
 
@@ -350,9 +401,7 @@ Wszystko, czego potrzebujemy w jednym miejscu.
 
 </header>
 
-
 <main>
-
 
 <!-- =========================
      ZAKŁADKI
@@ -360,310 +409,243 @@ Wszystko, czego potrzebujemy w jednym miejscu.
 
 <div class="tabs">
 
-
-<button
-class="tab active"
-onclick="showTab('events', this)"
->
+<button class="tab active"
+onclick="showTab('events', this)">
 📅<br>Wydarzenia
 </button>
 
-
-<button
-class="tab"
-onclick="showTab('ask', this)"
->
+<button class="tab"
+onclick="showTab('ask', this)">
 💬<br>Zapytaj
 </button>
 
-
-<button
-class="tab"
-onclick="showTab('answers', this)"
->
+<button class="tab"
+onclick="showTab('answers', this)">
 💡<br>Odpowiedzi
 </button>
 
-
 </div>
-
 
 
 <!-- =========================
      WYDARZENIA
 ========================= -->
 
-<section
-id="events"
-class="section active"
->
+<section id="events" class="section active">
 
 <div id="eventsList">
 
 <div class="empty">
-
-<div class="empty-icon">
-📅
-</div>
-
-<p>
-Ładowanie wydarzeń...
-</p>
-
+<div class="empty-icon">📅</div>
+<p>Ładowanie wydarzeń...</p>
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
      ZAPYTAJ
 ========================= -->
 
-<section
-id="ask"
-class="section"
->
+<section id="ask" class="section">
 
 <div class="card">
 
-<h2>
-💬 Zadaj anonimowe pytanie
-</h2>
+<h2>💬 Zadaj anonimowe pytanie</h2>
 
 <p class="small">
 Bez konta. Bez imienia. Bez wstydu.
 </p>
-
 
 <textarea
 id="questionInput"
 placeholder="O co chcesz zapytać?"
 ></textarea>
 
+<label class="file-label">
+🖼️ Dodaj zdjęcie
+<input
+id="questionImage"
+type="file"
+accept="image/png,image/jpeg"
+onchange="showFileName('questionImage','questionFileName')"
+>
+</label>
+
+<div id="questionFileName" class="file-name">
+Nie wybrano zdjęcia.
+</div>
 
 <button
 class="primary"
-onclick="submitQuestion()"
->
+onclick="submitQuestion()">
 ZAPYTAJ ANONIMOWO
 </button>
+
+<div id="questionStatus" class="status"></div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
      ODPOWIEDZI
 ========================= -->
 
-<section
-id="answers"
-class="section"
->
+<section id="answers" class="section">
 
-
-<!-- WYSZUKIWANIE -->
-
-<div class="search-card">
-
-<h2>
-🔍 Szukaj pytań
-</h2>
-
-<p class="small">
-Znajdź pytania dotyczące tego, czego szukasz.
-</p>
+<div class="search-box">
 
 <input
 id="searchInput"
-type="text"
-placeholder="Np. mundur, wyjazd, próba..."
+type="search"
+placeholder="🔎 Szukaj pytań..."
 oninput="searchQuestions()"
 >
 
 </div>
 
-
-<!-- LISTA PYTAŃ -->
-
 <div id="questionsList">
 
 <div class="empty">
-
-<div class="empty-icon">
-💡
-</div>
-
-<p>
-Ładowanie pytań...
-</p>
-
+<div class="empty-icon">💡</div>
+<p>Ładowanie pytań...</p>
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================
      STRONA PYTANIA
 ========================= -->
 
-<section
-id="questionPage"
-class="section"
->
+<section id="questionPage" class="section">
 
 <button
 class="secondary"
-onclick="backToQuestions()"
->
+onclick="backToQuestions()">
 ← Wróć do pytań
 </button>
 
-
 <div
 id="questionContent"
-style="margin-top:15px;"
-></div>
+style="margin-top:15px;">
+</div>
 
 </section>
-
 
 </main>
 
 
-
 <!-- =========================
-     PRZYCISK DODAWANIA
+     PLUS
 ========================= -->
 
 <button
 id="plusButton"
 class="plus"
-onclick="openEventModal()"
->
+onclick="openEventModal()">
 +
 </button>
 
 
-
 <!-- =========================
-     OKNO NOWEGO WYDARZENIA
+     MODAL WYDARZENIA
 ========================= -->
 
 <div
 id="eventModal"
-class="modal"
->
+class="modal">
 
 <div class="modal-box">
 
-
 <button
 class="close"
-onclick="closeEventModal()"
->
+onclick="closeEventModal()">
 ×
 </button>
 
+<h2>📅 Dodaj wydarzenie</h2>
 
-<h2>
-📅 Dodaj wydarzenie
-</h2>
-
-
-<label>
-Nazwa wydarzenia
-</label>
+<label>Nazwa wydarzenia</label>
 
 <input
 id="eventName"
 placeholder="Koncert, próba, wyjazd..."
 >
 
-
-<label>
-Data
-</label>
+<label>Data</label>
 
 <input
 id="eventDate"
 type="date"
 >
 
-
-<label>
-Godzina
-</label>
+<label>Godzina</label>
 
 <input
 id="eventTime"
 type="time"
 >
 
-
-<label>
-Miejsce
-</label>
+<label>Miejsce</label>
 
 <input
 id="eventLocation"
 placeholder="Gdzie?"
 >
 
-
-<label>
-Dodatkowe informacje
-</label>
+<label>Dodatkowe informacje</label>
 
 <textarea
 id="eventDescription"
 placeholder="Mundur, co zabrać, godzina zbiórki..."
 ></textarea>
 
+<label class="file-label">
+🖼️ Dodaj zdjęcie
+<input
+id="eventImage"
+type="file"
+accept="image/png,image/jpeg"
+onchange="showFileName('eventImage','eventFileName')"
+>
+</label>
+
+<div id="eventFileName" class="file-name">
+Nie wybrano zdjęcia.
+</div>
 
 <button
 class="primary"
-onclick="addOrchestraEvent()"
->
+onclick="addOrchestraEvent()">
 DODAJ WYDARZENIE 🎺
 </button>
 
-</div>
+<div id="eventStatus" class="status"></div>
 
 </div>
+</div>
 
-
-
-<!-- =========================
-     SUPABASE
-========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-/*
-====================================================
-POŁĄCZENIE Z SUPABASE
-====================================================
-*/
+/* ==================================================
+   SUPABASE
+================================================== */
 
 const SUPABASE_URL =
 "https://dlrekntxaplaahdhdvjx.supabase.co";
 
-
 const SUPABASE_KEY =
 "sb_publishable_PV6MGYFLs3kwV7Pr5u4uCw_f43IxNfk";
-
 
 const supabaseClient =
 supabase.createClient(
@@ -672,41 +654,38 @@ supabase.createClient(
 );
 
 
+/* ==================================================
+   USTAWIENIA
+================================================== */
 
-/*
-====================================================
-ZAKŁADKI
-====================================================
-*/
+const IMAGE_BUCKET = "post-images";
+
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+
+
+/* ==================================================
+   ZAKŁADKI
+================================================== */
 
 function showTab(name, button) {
-
 
 document
 .querySelectorAll(".section")
 .forEach(section => {
-
-section.classList.remove("active");
-
+    section.classList.remove("active");
 });
-
 
 document
 .querySelectorAll(".tab")
 .forEach(tab => {
-
-tab.classList.remove("active");
-
+    tab.classList.remove("active");
 });
-
 
 document
 .getElementById(name)
 .classList.add("active");
 
-
 button.classList.add("active");
-
 
 document
 .getElementById("plusButton")
@@ -718,12 +697,9 @@ name === "events"
 }
 
 
-
-/*
-====================================================
-OKNO WYDARZENIA
-====================================================
-*/
+/* ==================================================
+   MODAL
+================================================== */
 
 function openEventModal() {
 
@@ -732,7 +708,6 @@ document
 .style.display = "flex";
 
 }
-
 
 function closeEventModal() {
 
@@ -743,15 +718,145 @@ document
 }
 
 
+/* ==================================================
+   NAZWA PLIKU
+================================================== */
+
+function showFileName(inputId, outputId) {
+
+const input =
+document.getElementById(inputId);
+
+const output =
+document.getElementById(outputId);
+
+if (!input.files.length) {
+
+output.textContent =
+"Nie wybrano zdjęcia.";
+
+return;
+
+}
+
+output.textContent =
+input.files[0].name;
+
+}
+
+
+/* ==================================================
+   SPRAWDZANIE ZDJĘCIA
+================================================== */
+
+function validateImage(file) {
+
+if (!file) {
+    return true;
+}
+
+if (
+file.type !== "image/png" &&
+file.type !== "image/jpeg"
+) {
+
+alert(
+"Dozwolone są tylko zdjęcia PNG i JPEG! 🖼️"
+);
+
+return false;
+
+}
+
+if (file.size > MAX_IMAGE_SIZE) {
+
+alert(
+"Zdjęcie jest za duże! Maksymalny rozmiar to 5 MB."
+);
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   UPLOAD ZDJĘCIA
+================================================== */
+
+async function uploadImage(file) {
+
+if (!file) {
+    return null;
+}
+
+if (!validateImage(file)) {
+    return null;
+}
+
+const extension =
+file.type === "image/png"
+? "png"
+: "jpg";
+
+const fileName =
+Date.now() +
+"-" +
+Math.random()
+.toString(36)
+.substring(2) +
+"." +
+extension;
+
+const filePath =
+"posts/" + fileName;
+
+const { error } =
+await supabaseClient
+.storage
+.from(IMAGE_BUCKET)
+.upload(
+    filePath,
+    file,
+    {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: file.type
+    }
+);
+
+if (error) {
+
+console.error("Błąd uploadu:", error);
+
+throw error;
+
+}
+
 
 /*
-====================================================
-DODAWANIE WYDARZENIA
-====================================================
+Pobieramy publiczny URL.
 */
 
-async function addOrchestraEvent() {
+const { data } =
+supabaseClient
+.storage
+.from(IMAGE_BUCKET)
+.getPublicUrl(filePath);
 
+return data.publicUrl;
+
+}
+
+
+/* ==================================================
+   DODAWANIE WYDARZENIA
+================================================== */
+
+async function addOrchestraEvent() {
 
 const name =
 document
@@ -759,18 +864,15 @@ document
 .value
 .trim();
 
-
 const date =
 document
 .getElementById("eventDate")
 .value;
 
-
 const time =
 document
 .getElementById("eventTime")
 .value;
-
 
 const location =
 document
@@ -778,12 +880,20 @@ document
 .value
 .trim();
 
-
 const description =
 document
 .getElementById("eventDescription")
 .value
 .trim();
+
+const imageInput =
+document.getElementById("eventImage");
+
+const image =
+imageInput.files[0];
+
+const status =
+document.getElementById("eventStatus");
 
 
 if (!name || !date) {
@@ -796,70 +906,72 @@ return;
 
 }
 
+try {
 
-const { data, error } =
+status.textContent =
+"Przesyłanie...";
+
+let imageUrl = null;
+
+if (image) {
+
+imageUrl =
+await uploadImage(image);
+
+}
+
+const { error } =
 await supabaseClient
 .from("events")
 .insert({
 
 name: name,
-
 date: date,
-
 time: time || null,
-
 location: location || null,
+description: description || null,
+image_url: imageUrl
 
-description:
-description || null
-
-})
-.select();
-
+});
 
 if (error) {
-
-console.error(error);
-
-alert(
-"Nie udało się dodać wydarzenia 😭"
-);
-
-return;
-
+    throw error;
 }
 
-
 closeEventModal();
-
 
 document
 .getElementById("eventName")
 .value = "";
 
-
 document
 .getElementById("eventDate")
 .value = "";
-
 
 document
 .getElementById("eventTime")
 .value = "";
 
-
 document
 .getElementById("eventLocation")
 .value = "";
-
 
 document
 .getElementById("eventDescription")
 .value = "";
 
+document
+.getElementById("eventImage")
+.value = "";
+
+document
+.getElementById("eventFileName")
+.textContent =
+"Nie wybrano zdjęcia.";
+
+status.textContent = "";
 
 await loadEvents();
-
 
 alert(
 "Wydarzenie zostało dodane! 🎺"
@@ -867,25 +979,37 @@ alert(
 
 }
 
+catch (error) {
+
+console.error(error);
+
+status.textContent = "";
+
+alert(
+"Nie udało się dodać wydarzenia 😭"
+);
+
+}
+
+}
 
 
-/*
-====================================================
-WCZYTYWANIE WYDARZEŃ
-====================================================
-*/
+/* ==================================================
+   WCZYTYWANIE WYDARZEŃ
+================================================== */
 
 async function loadEvents() {
-
 
 const { data, error } =
 await supabaseClient
 .from("events")
 .select("*")
-.order("date", {
-ascending: true
-});
-
+.order(
+"date",
+{
+    ascending: true
+}
+);
 
 if (error) {
 
@@ -896,15 +1020,8 @@ document
 .innerHTML = `
 
 <div class="empty">
-
-<div class="empty-icon">
-😭
-</div>
-
-<p>
-Nie udało się wczytać wydarzeń.
-</p>
-
+<div class="empty-icon">😭</div>
+<p>Nie udało się wczytać wydarzeń.</p>
 </div>
 
 `;
@@ -912,31 +1029,21 @@ Nie udało się wczytać wydarzeń.
 return;
 
 }
-
 
 const list =
 document.getElementById(
 "eventsList"
 );
 
-
 list.innerHTML = "";
-
 
 if (!data || data.length === 0) {
 
 list.innerHTML = `
 
 <div class="empty">
-
-<div class="empty-icon">
-📅
-</div>
-
-<p>
-Brak wydarzeń.
-</p>
-
+<div class="empty-icon">📅</div>
+<p>Brak wydarzeń.</p>
 </div>
 
 `;
@@ -945,59 +1052,67 @@ return;
 
 }
 
-
 data.forEach(event => {
-
 
 const card =
 document.createElement("div");
 
-
-card.className = "card";
-
+card.className =
+"card";
 
 card.innerHTML = `
 
-<div class="small">
-
+<div class="event-date">
 📆 ${escapeHTML(event.date)}
-
 ${event.time
 ? " • 🕐 " +
 escapeHTML(event.time)
 : ""}
-
 </div>
 
-
-<h3>
-
+<div class="event-title">
 🎵 ${escapeHTML(event.name)}
-
-</h3>
-
-
-<p>
-
-${escapeHTML(
-event.description || ""
-)}
-
-</p>
-
+</div>
 
 ${
 event.location
 ?
-`<div class="small">
+`
+<div class="event-info">
 📍 ${escapeHTML(event.location)}
-</div>`
+</div>
+`
+:
+""
+}
+
+${
+event.description
+?
+`
+<p class="event-info">
+${escapeHTML(event.description)}
+</p>
+`
+:
+""
+}
+
+${
+event.image_url
+?
+`
+<img
+class="post-image"
+src="${escapeAttribute(event.image_url)}"
+alt="Zdjęcie wydarzenia"
+>
+`
 :
 ""
 }
 
 `;
-
 
 list.appendChild(card);
 
@@ -1006,25 +1121,32 @@ list.appendChild(card);
 }
 
 
-
-/*
-====================================================
-DODAWANIE PYTANIA
-====================================================
-*/
+/* ==================================================
+   PYTANIE
+================================================== */
 
 async function submitQuestion() {
-
 
 const input =
 document.getElementById(
 "questionInput"
 );
 
-
 const text =
 input.value.trim();
 
+const imageInput =
+document.getElementById(
+"questionImage"
+);
+
+const image =
+imageInput.files[0];
+
+const status =
+document.getElementById(
+"questionStatus"
+);
 
 if (!text) {
 
@@ -1036,6 +1158,19 @@ return;
 
 }
 
+try {
+
+status.textContent =
+"Publikowanie...";
+
+let imageUrl = null;
+
+if (image) {
+
+imageUrl =
+await uploadImage(image);
+
+}
 
 const { error } =
 await supabaseClient
@@ -1043,33 +1178,31 @@ await supabaseClient
 .insert({
 
 text: text,
-
-likes: 0
+likes: 0,
+image_url: imageUrl
 
 });
 
-
 if (error) {
-
-console.error(error);
-
-alert(
-"Nie udało się dodać pytania 😭"
-);
-
-return;
-
+    throw error;
 }
-
 
 input.value = "";
 
+imageInput.value = "";
+
+document
+.getElementById(
+"questionFileName"
+)
+.textContent =
+"Nie wybrano zdjęcia.";
+
+status.textContent = "";
 
 await loadQuestions();
 
-
 showAnswersTab();
-
 
 alert(
 "Twoje pytanie zostało dodane anonimowo! 💚"
@@ -1077,44 +1210,49 @@ alert(
 
 }
 
+catch (error) {
+
+console.error(
+"Błąd dodawania pytania:",
+error
+);
+
+status.textContent = "";
+
+alert(
+"Nie udało się dodać pytania 😭"
+);
+
+}
+
+}
 
 
-/*
-====================================================
-PRZEJŚCIE DO ODPOWIEDZI
-====================================================
-*/
+/* ==================================================
+   PRZEJŚCIE DO ODPOWIEDZI
+================================================== */
 
 function showAnswersTab() {
-
 
 document
 .querySelectorAll(".section")
 .forEach(section => {
-
-section.classList.remove("active");
-
+    section.classList.remove("active");
 });
-
 
 document
 .getElementById("answers")
 .classList.add("active");
 
-
 document
 .querySelectorAll(".tab")
 .forEach(tab => {
-
-tab.classList.remove("active");
-
+    tab.classList.remove("active");
 });
-
 
 document
 .querySelectorAll(".tab")[2]
 .classList.add("active");
-
 
 document
 .getElementById("plusButton")
@@ -1123,50 +1261,25 @@ document
 }
 
 
+/* ==================================================
+   PYTANIA
+================================================== */
 
-/*
-====================================================
-WCZYTYWANIE PYTAŃ
-====================================================
-*/
-
-async function loadQuestions(
-searchText = ""
-) {
+let allQuestions = [];
 
 
-let query =
-supabaseClient
+async function loadQuestions() {
+
+const { data, error } =
+await supabaseClient
 .from("questions")
-.select(
-"id, text, likes, created_at"
-)
+.select("*")
 .order(
 "created_at",
 {
-ascending: false
+    ascending: false
 }
 );
-
-
-if (
-searchText.trim()
-) {
-
-query =
-query.ilike(
-"text",
-"%" +
-searchText.trim() +
-"%"
-);
-
-}
-
-
-const { data, error } =
-await query;
-
 
 if (error) {
 
@@ -1177,15 +1290,8 @@ document
 .innerHTML = `
 
 <div class="empty">
-
-<div class="empty-icon">
-😭
-</div>
-
-<p>
-Nie udało się wczytać pytań.
-</p>
-
+<div class="empty-icon">😭</div>
+<p>Nie udało się wczytać pytań.</p>
 </div>
 
 `;
@@ -1194,38 +1300,36 @@ return;
 
 }
 
+allQuestions =
+data || [];
+
+renderQuestions(
+allQuestions
+);
+
+}
+
+
+/* ==================================================
+   RENDEROWANIE PYTAŃ
+================================================== */
+
+function renderQuestions(questions) {
 
 const list =
 document.getElementById(
 "questionsList"
 );
 
-
 list.innerHTML = "";
 
-
-if (!data || data.length === 0) {
+if (!questions.length) {
 
 list.innerHTML = `
 
 <div class="empty">
-
-<div class="empty-icon">
-🔎
-</div>
-
-<p>
-
-${
-searchText.trim()
-?
-"Nie znaleziono pytań."
-:
-"Nie ma jeszcze żadnych pytań!"
-}
-
-</p>
-
+<div class="empty-icon">💡</div>
+<p>Nie znaleziono żadnych pytań.</p>
 </div>
 
 `;
@@ -1234,29 +1338,23 @@ return;
 
 }
 
-
-data.forEach(question => {
-
+questions.forEach(question => {
 
 const card =
 document.createElement("div");
 
-
 card.className =
 "question-card";
-
 
 card.innerHTML = `
 
 <div
-onclick="openQuestion(${question.id})"
-style="cursor:pointer;"
->
+class="question-click"
+onclick="openQuestion(${question.id})">
 
 <div class="small">
 💬 Anonimowo
 </div>
-
 
 <div class="question-title">
 
@@ -1266,27 +1364,37 @@ question.text
 
 </div>
 
-
 <div class="question-meta">
 
 ❤️ ${question.likes || 0}
 
 </div>
 
-</div>
+${
+question.image_url
+?
+`
+<img
+class="post-image"
+src="${escapeAttribute(question.image_url)}"
+alt="Załączone zdjęcie"
+>
+`
+:
+""
+}
 
+</div>
 
 <button
 class="like-button"
-onclick="likeQuestion(event, ${question.id})"
->
+onclick="likeQuestion(event, ${question.id})">
 
 ❤️ ${question.likes || 0}
 
 </button>
 
 `;
-
 
 list.appendChild(card);
 
@@ -1295,52 +1403,60 @@ list.appendChild(card);
 }
 
 
-
-/*
-====================================================
-WYSZUKIWANIE PYTAŃ
-====================================================
-*/
+/* ==================================================
+   SZUKANIE
+================================================== */
 
 function searchQuestions() {
 
-
-const input =
-document.getElementById(
+const search =
+document
+.getElementById(
 "searchInput"
+)
+.value
+.toLowerCase()
+.trim();
+
+if (!search) {
+
+renderQuestions(
+allQuestions
 );
 
+return;
 
-if (!input) return;
+}
 
+const filtered =
+allQuestions.filter(
+question =>
+question.text
+.toLowerCase()
+.includes(search)
+);
 
-loadQuestions(
-input.value
+renderQuestions(
+filtered
 );
 
 }
 
 
-
-/*
-====================================================
-POLUBIENIE PYTANIA
-====================================================
-*/
+/* ==================================================
+   LIKE PYTANIA
+================================================== */
 
 async function likeQuestion(
 event,
 questionId
 ) {
 
-
 event.stopPropagation();
-
 
 const key =
 "liked-question-" +
 questionId;
-
 
 if (
 localStorage.getItem(key)
@@ -1354,7 +1470,6 @@ return;
 
 }
 
-
 const { data: question } =
 await supabaseClient
 .from("questions")
@@ -1362,9 +1477,7 @@ await supabaseClient
 .eq("id", questionId)
 .single();
 
-
 if (!question) return;
-
 
 const { error } =
 await supabaseClient
@@ -1375,8 +1488,10 @@ likes:
 (question.likes || 0) + 1
 
 })
-.eq("id", questionId);
-
+.eq(
+"id",
+questionId
+);
 
 if (error) {
 
@@ -1386,54 +1501,45 @@ return;
 
 }
 
-
 localStorage.setItem(
 key,
 "true"
 );
 
-
-const searchInput =
-document.getElementById(
-"searchInput"
-);
-
-
-loadQuestions(
-searchInput
-? searchInput.value
-: ""
-);
+await loadQuestions();
 
 }
 
 
-
-/*
-====================================================
-OTWIERANIE PYTANIA
-====================================================
-*/
+/* ==================================================
+   OTWIERANIE PYTANIA
+================================================== */
 
 async function openQuestion(
 questionId
 ) {
 
-
-const { data: question } =
+const { data: question,
+        error: questionError } =
 await supabaseClient
 .from("questions")
-.select(
-"id, text, likes, created_at"
-)
+.select("*")
 .eq("id", questionId)
 .single();
 
+if (
+questionError ||
+!question
+) {
 
-if (!question) return;
+console.error(questionError);
 
+return;
 
-const { data: answers } =
+}
+
+const { data: answers,
+        error: answerError } =
 await supabaseClient
 .from("answers")
 .select("*")
@@ -1444,53 +1550,78 @@ questionId
 .order(
 "likes",
 {
-ascending: false
+    ascending: false
 }
 );
 
+if (answerError) {
+
+console.error(answerError);
+
+}
 
 document
 .querySelectorAll(".section")
 .forEach(section => {
-
-section.classList.remove("active");
-
+    section.classList.remove("active");
 });
 
+document
+.getElementById(
+"questionPage"
+)
+.classList.add("active");
 
 document
-.getElementById("questionPage")
-.classList.add("active");
+.querySelectorAll(".tab")
+.forEach(tab => {
+    tab.classList.remove("active");
+});
+
+document
+.getElementById("plusButton")
+.style.display = "none";
 
 
 let html = `
 
 <div class="card">
 
-
 <div class="small">
 💬 Anonimowo
 </div>
 
-
 <h2>
-
 ${escapeHTML(
 question.text
 )}
-
 </h2>
 
+${
+question.image_url
+?
+`
+<img
+class="post-image"
+src="${escapeAttribute(question.image_url)}"
+alt="Załączone zdjęcie"
+>
+`
+:
+""
+}
 
 <button
 class="like-button"
-onclick="likeQuestionFromPage(${question.id})"
->
+onclick="
+likeQuestionFromPage(
+${question.id}
+)
+">
 
 ❤️ ${question.likes || 0}
 
 </button>
-
 
 <h3 style="margin-top:25px;">
 💡 Odpowiedzi
@@ -1499,7 +1630,10 @@ onclick="likeQuestionFromPage(${question.id})"
 `;
 
 
-if (!answers || answers.length === 0) {
+if (
+!answers ||
+answers.length === 0
+) {
 
 html += `
 
@@ -1512,8 +1646,9 @@ Bądź pierwszy! 👀
 
 `;
 
-} else {
+}
 
+else {
 
 answers.forEach(answer => {
 
@@ -1525,15 +1660,25 @@ html += `
 💬 Anonimowo
 </div>
 
-
 <p>
-
 ${escapeHTML(
 answer.text
 )}
-
 </p>
 
+${
+answer.image_url
+?
+`
+<img
+class="answer-image"
+src="${escapeAttribute(answer.image_url)}"
+alt="Załączone zdjęcie"
+>
+`
+:
+""
+}
 
 <button
 class="like-button"
@@ -1542,8 +1687,7 @@ likeAnswer(
 ${question.id},
 ${answer.id}
 )
-"
->
+">
 
 ❤️ ${answer.likes || 0}
 
@@ -1565,16 +1709,43 @@ id="answerInput"
 placeholder="Napisz anonimową odpowiedź..."
 ></textarea>
 
+<label class="file-label">
+🖼️ Dodaj zdjęcie
+<input
+id="answerImage"
+type="file"
+accept="image/png,image/jpeg"
+onchange="
+showFileName(
+'answerImage',
+'answerFileName'
+)
+"
+>
+</label>
+
+<div
+id="answerFileName"
+class="file-name">
+Nie wybrano zdjęcia.
+</div>
 
 <button
 class="primary"
-onclick="submitAnswer(${question.id})"
->
+onclick="
+submitAnswer(
+${question.id}
+)
+">
 
 ODPOWIEDZ ANONIMOWO
 
 </button>
 
+<div
+id="answerStatus"
+class="status">
+</div>
 
 </div>
 
@@ -1582,28 +1753,25 @@ ODPOWIEDZ ANONIMOWO
 
 
 document
-.getElementById("questionContent")
+.getElementById(
+"questionContent"
+)
 .innerHTML = html;
 
 }
 
 
-
-/*
-====================================================
-POLUBIENIE PYTANIA NA JEGO STRONIE
-====================================================
-*/
+/* ==================================================
+   LIKE PYTANIA ZE STRONY
+================================================== */
 
 async function likeQuestionFromPage(
 questionId
 ) {
 
-
 const key =
 "liked-question-" +
 questionId;
-
 
 if (
 localStorage.getItem(key)
@@ -1613,7 +1781,6 @@ return;
 
 }
 
-
 const { data: question } =
 await supabaseClient
 .from("questions")
@@ -1621,9 +1788,7 @@ await supabaseClient
 .eq("id", questionId)
 .single();
 
-
 if (!question) return;
-
 
 const { error } =
 await supabaseClient
@@ -1634,8 +1799,10 @@ likes:
 (question.likes || 0) + 1
 
 })
-.eq("id", questionId);
-
+.eq(
+"id",
+questionId
+);
 
 if (error) {
 
@@ -1645,39 +1812,46 @@ return;
 
 }
 
-
 localStorage.setItem(
 key,
 "true"
 );
 
-
-openQuestion(questionId);
+openQuestion(
+questionId
+);
 
 }
 
 
-
-/*
-====================================================
-DODAWANIE ODPOWIEDZI
-====================================================
-*/
+/* ==================================================
+   DODAWANIE ODPOWIEDZI
+================================================== */
 
 async function submitAnswer(
 questionId
 ) {
-
 
 const input =
 document.getElementById(
 "answerInput"
 );
 
-
 const text =
 input.value.trim();
 
+const imageInput =
+document.getElementById(
+"answerImage"
+);
+
+const image =
+imageInput.files[0];
+
+const status =
+document.getElementById(
+"answerStatus"
+);
 
 if (!text) {
 
@@ -1689,6 +1863,19 @@ return;
 
 }
 
+try {
+
+status.textContent =
+"Publikowanie...";
+
+let imageUrl = null;
+
+if (image) {
+
+imageUrl =
+await uploadImage(image);
+
+}
 
 const { error } =
 await supabaseClient
@@ -1698,48 +1885,56 @@ await supabaseClient
 question_id:
 questionId,
 
-text: text,
+text:
+text,
 
-likes: 0
+likes: 0,
+
+image_url:
+imageUrl
 
 });
 
-
 if (error) {
+    throw error;
+}
 
-console.error(error);
+openQuestion(
+questionId
+);
+
+}
+
+catch (error) {
+
+console.error(
+"Błąd dodawania odpowiedzi:",
+error
+);
+
+status.textContent = "";
 
 alert(
 "Nie udało się dodać odpowiedzi 😭"
 );
 
-return;
+}
 
 }
 
 
-openQuestion(questionId);
-
-}
-
-
-
-/*
-====================================================
-POLUBIENIE ODPOWIEDZI
-====================================================
-*/
+/* ==================================================
+   LIKE ODPOWIEDZI
+================================================== */
 
 async function likeAnswer(
 questionId,
 answerId
 ) {
 
-
 const key =
 "liked-answer-" +
 answerId;
-
 
 if (
 localStorage.getItem(key)
@@ -1753,7 +1948,6 @@ return;
 
 }
 
-
 const { data: answer } =
 await supabaseClient
 .from("answers")
@@ -1761,9 +1955,7 @@ await supabaseClient
 .eq("id", answerId)
 .single();
 
-
 if (!answer) return;
-
 
 const { error } =
 await supabaseClient
@@ -1774,8 +1966,10 @@ likes:
 (answer.likes || 0) + 1
 
 })
-.eq("id", answerId);
-
+.eq(
+"id",
+answerId
+);
 
 if (error) {
 
@@ -1785,101 +1979,91 @@ return;
 
 }
 
-
 localStorage.setItem(
 key,
 "true"
 );
 
-
-openQuestion(questionId);
+openQuestion(
+questionId
+);
 
 }
 
 
-
-/*
-====================================================
-POWRÓT DO PYTAŃ
-====================================================
-*/
+/* ==================================================
+   POWRÓT
+================================================== */
 
 function backToQuestions() {
 
-
 document
-.getElementById("questionPage")
+.getElementById(
+"questionPage"
+)
 .classList.remove("active");
 
-
 document
-.getElementById("answers")
+.getElementById(
+"answers"
+)
 .classList.add("active");
-
 
 document
 .querySelectorAll(".tab")
 .forEach(tab => {
-
-tab.classList.remove("active");
-
+    tab.classList.remove("active");
 });
-
 
 document
 .querySelectorAll(".tab")[2]
 .classList.add("active");
 
-
 document
 .getElementById("plusButton")
 .style.display = "none";
 
-
-const searchInput =
-document.getElementById(
-"searchInput"
-);
-
-
-loadQuestions(
-searchInput
-? searchInput.value
-: ""
-);
+loadQuestions();
 
 }
 
 
-
-/*
-====================================================
-ZABEZPIECZENIE TEKSTU
-====================================================
-*/
+/* ==================================================
+   BEZPIECZNY HTML
+================================================== */
 
 function escapeHTML(text) {
-
 
 const div =
 document.createElement("div");
 
-
 div.textContent =
 text || "";
-
 
 return div.innerHTML;
 
 }
 
 
+/* ==================================================
+   BEZPIECZNY URL
+================================================== */
 
-/*
-====================================================
-URUCHOMIENIE STRONY
-====================================================
-*/
+function escapeAttribute(value) {
+
+return String(value || "")
+.replace(/&/g, "&amp;")
+.replace(/"/g, "&quot;")
+.replace(/'/g, "&#039;")
+.replace(/</g, "&lt;")
+.replace(/>/g, "&gt;");
+
+}
+
+
+/* ==================================================
+   START
+================================================== */
 
 loadEvents();
 
@@ -1887,10 +2071,5 @@ loadQuestions();
 
 </script>
 
-
 </body>
-
 </html>
-
-
-

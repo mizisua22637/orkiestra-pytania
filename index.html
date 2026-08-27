@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Orkiestra Hub 🎺</title><style>
+<!DOCTYPE html><html lang="pl"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Orkiestra Hub 🎺</title><style>
 
 /* ==================================================
    RESET
@@ -27,15 +29,15 @@ body {
 
     background:
         radial-gradient(
-            circle at top left,
-            #e5eee7 0%,
-            transparent 35%
+            circle at 15% 0%,
+            #dfece3 0%,
+            transparent 30%
         ),
         linear-gradient(
             180deg,
             #edf3ee 0%,
-            #f7f8f5 45%,
-            #eef2ee 100%
+            #f8faf7 55%,
+            #edf2ee 100%
         );
 }
 
@@ -45,63 +47,51 @@ body {
 ================================================== */
 
 header {
+    background:
+        linear-gradient(
+            135deg,
+            #243c32,
+            #3d604f
+        );
 
     color: white;
 
     padding:
-        34px
-        18px
-        32px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #243d33,
-            #3c5d4e
-        );
+        32px
+        20px
+        30px;
 
     border-radius:
         0
         0
-        34px
-        34px;
+        32px
+        32px;
 
     box-shadow:
-        0 10px 35px rgba(41,66,56,.20);
-
+        0 10px 35px rgba(41,66,56,.18);
 }
 
 .header-inner {
-
-    max-width: 680px;
-
+    max-width: 650px;
     margin: auto;
-
 }
 
 header h1 {
-
     margin: 0;
 
-    font-size: 30px;
+    font-size: 29px;
+    font-weight: 850;
 
-    letter-spacing: -.8px;
-
+    letter-spacing: -.7px;
 }
 
 header p {
-
-    margin:
-        8px
-        0
-        0;
+    margin: 8px 0 0;
 
     font-size: 14px;
-
     line-height: 1.5;
 
     opacity: .78;
-
 }
 
 
@@ -110,254 +100,118 @@ header p {
 ================================================== */
 
 main {
-
-    max-width: 680px;
+    width: 100%;
+    max-width: 650px;
 
     margin: auto;
 
     padding:
-        18px
+        16px
         14px
-        110px;
-
+        40px;
 }
 
 
 /* ==================================================
-   TABS — SEPARATED AND CLEAR
+   TABS
 ================================================== */
 
 .tabs {
+    display: flex;
 
-    display: grid;
+    width: 100%;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    padding: 5px;
 
-    gap: 7px;
+    margin-bottom: 18px;
 
-    padding: 7px;
-
-    margin-bottom: 22px;
-
-    background:
-        rgba(255,255,255,.90);
+    background: rgba(255,255,255,.94);
 
     border:
-        1px solid
-        rgba(41,66,56,.07);
+        1px solid rgba(41,66,56,.06);
 
-    border-radius: 24px;
+    border-radius: 22px;
 
     box-shadow:
-        0 8px 25px
-        rgba(41,66,56,.10);
+        0 6px 24px rgba(41,66,56,.09);
 
     position: sticky;
+    top: 8px;
 
-    top: 9px;
+    z-index: 50;
 
-    z-index: 20;
-
-    backdrop-filter:
-        blur(14px);
-
+    backdrop-filter: blur(15px);
 }
 
-
-/* Individual tab */
-
 .tab {
-
-    min-height: 64px;
+    flex: 1;
 
     border: 0;
 
-    border-radius: 18px;
+    background: transparent;
 
-    background:
-        transparent;
+    color: #718078;
 
-    color:
-        #718078;
+    padding:
+        11px
+        4px;
 
-    font-size: 13px;
-
-    font-weight: 700;
-
-    line-height: 1.35;
+    border-radius: 17px;
 
     cursor: pointer;
 
+    font-size: 13px;
+    font-weight: 650;
+
     transition:
-        background .2s ease,
-        color .2s ease,
-        transform .15s ease,
-        box-shadow .2s ease;
-
+        background .18s ease,
+        color .18s ease,
+        transform .12s ease;
 }
-
-
-/* Hover */
-
-.tab:hover {
-
-    background:
-        #f0f4f1;
-
-    color:
-        #456253;
-
-}
-
-
-/* Active */
 
 .tab.active {
+    background: #dce9df;
 
-    color:
-        #294238;
+    color: #294238;
 
-    background:
-        linear-gradient(
-            145deg,
-            #dce9df,
-            #cfdfd4
-        );
+    font-weight: 850;
 
     box-shadow:
-        0 4px 12px
-        rgba(41,66,56,.13);
-
+        0 2px 8px rgba(41,66,56,.07);
 }
-
-
-/* Different active tab accents */
-
-.tab:nth-child(1).active {
-
-    background:
-        linear-gradient(
-            145deg,
-            #dce9df,
-            #cfe1d4
-        );
-
-}
-
-.tab:nth-child(2).active {
-
-    background:
-        linear-gradient(
-            145deg,
-            #e0ebe3,
-            #d1e3d7
-        );
-
-}
-
-.tab:nth-child(3).active {
-
-    background:
-        linear-gradient(
-            145deg,
-            #e3ece5,
-            #d2e1d8
-        );
-
-}
-
 
 .tab:active {
-
-    transform:
-        scale(.96);
-
+    transform: scale(.96);
 }
 
 
 /* ==================================================
-   SECTIONS
+   IMPORTANT:
+   SEKCJE NIEAKTYWNE NIE ZAJMUJĄ MIEJSCA
 ================================================== */
 
 .section {
-
-    display: none;
-
+    display: none !important;
 }
 
 .section.active {
-
-    display: block;
+    display: block !important;
 
     animation:
-        sectionIn .22s ease;
-
+        screenIn .2s ease;
 }
 
-
-@keyframes sectionIn {
+@keyframes screenIn {
 
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(7px);
-
+        transform: translateY(6px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0);
     }
-
-}
-
-
-/* ==================================================
-   SECTION HEADER
-================================================== */
-
-.section-heading {
-
-    margin:
-        0
-        0
-        14px;
-
-    padding:
-        3px
-        4px;
-
-}
-
-.section-heading h2 {
-
-    margin: 0;
-
-    font-size: 21px;
-
-    letter-spacing:
-        -.3px;
-
-}
-
-.section-heading p {
-
-    margin:
-        4px
-        0
-        0;
-
-    color:
-        #78857e;
-
-    font-size: 13px;
 
 }
 
@@ -371,49 +225,30 @@ main {
 .search-card {
 
     background:
-        rgba(255,255,255,.96);
+        rgba(255,255,255,.97);
 
     border:
-        1px solid
-        rgba(41,66,56,.055);
+        1px solid rgba(41,66,56,.045);
 
-    border-radius:
-        23px;
+    border-radius: 23px;
 
     box-shadow:
-        0 7px 24px
-        rgba(41,66,56,.075);
-
+        0 6px 24px rgba(41,66,56,.075);
 }
 
 .card {
-
-    padding:
-        19px;
-
-    margin-bottom:
-        15px;
-
+    padding: 19px;
+    margin-bottom: 15px;
 }
 
 .card h2,
 .card h3 {
-
     margin-top: 0;
-
 }
 
 .small {
-
-    color:
-        #738078;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.45;
-
+    color: #718078;
+    font-size: 13px;
 }
 
 
@@ -426,91 +261,45 @@ textarea {
 
     width: 100%;
 
-    padding:
-        14px
-        15px;
+    padding: 14px;
 
-    margin:
-        8px
-        0
-        12px;
+    margin-top: 8px;
+    margin-bottom: 12px;
 
     border:
-        2px solid
-        #e1e8e3;
+        2px solid #e1e9e3;
 
-    border-radius:
-        16px;
+    border-radius: 15px;
 
-    background:
-        #fafcf9;
+    background: #fafcf9;
 
-    color:
-        #294238;
+    color: #294238;
 
-    font-family:
-        inherit;
+    font-family: inherit;
+    font-size: 15px;
 
-    font-size:
-        15px;
-
-    outline:
-        none;
+    outline: none;
 
     transition:
         border .2s ease,
         box-shadow .2s ease,
         background .2s ease;
-
 }
 
 input:focus,
 textarea:focus {
 
-    background:
-        white;
+    border-color: #91ae9b;
 
-    border-color:
-        #91ae9b;
+    background: white;
 
     box-shadow:
-        0 0 0 4px
-        rgba(145,174,155,.15);
-
+        0 0 0 4px rgba(145,174,155,.15);
 }
 
 textarea {
-
-    min-height:
-        120px;
-
-    resize:
-        vertical;
-
-}
-
-
-/* ==================================================
-   LABELS
-================================================== */
-
-label {
-
-    display:
-        block;
-
-    margin-top:
-        7px;
-
-    color:
-        #456253;
-
-    font-size:
-        13px;
-
-    font-weight:
-        700;
-
+    min-height: 120px;
+    resize: vertical;
 }
 
 
@@ -520,107 +309,61 @@ label {
 
 .primary {
 
-    width:
-        100%;
+    width: 100%;
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        16px;
+    padding: 14px;
 
-    padding:
-        14px;
+    margin-top: 7px;
 
-    margin-top:
-        7px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
             135deg,
             #294238,
-            #426452
+            #426553
         );
 
-    color:
-        white;
+    color: white;
 
-    font-weight:
-        800;
+    font-weight: 850;
 
-    font-size:
-        14px;
-
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 6px 16px
-        rgba(41,66,56,.20);
+        0 6px 17px rgba(41,66,56,.2);
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease;
-
-}
-
-.primary:hover {
-
-    box-shadow:
-        0 8px 20px
-        rgba(41,66,56,.25);
-
+        transform .12s ease,
+        box-shadow .12s ease;
 }
 
 .primary:active {
+    transform: scale(.98);
 
-    transform:
-        scale(.98);
-
+    box-shadow:
+        0 3px 9px rgba(41,66,56,.15);
 }
 
 .secondary {
 
-    border:
-        0;
+    border: 0;
 
-    border-radius:
-        14px;
+    background: #e5ede7;
+
+    color: #294238;
 
     padding:
         10px
-        15px;
+        14px;
 
-    background:
-        #e3ebe5;
+    border-radius: 13px;
 
-    color:
-        #294238;
+    font-weight: 700;
 
-    font-weight:
-        700;
-
-    cursor:
-        pointer;
-
-    transition:
-        transform .15s ease,
-        background .15s ease;
-
-}
-
-.secondary:hover {
-
-    background:
-        #d8e4dc;
-
-}
-
-.secondary:active {
-
-    transform:
-        scale(.96);
-
+    cursor: pointer;
 }
 
 
@@ -630,38 +373,21 @@ label {
 
 .search-card {
 
-    padding:
-        18px;
+    padding: 18px;
 
-    margin-bottom:
-        16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.98),
-            rgba(245,249,246,.98)
-        );
-
+    margin-bottom: 15px;
 }
 
 .search-card h2 {
-
-    margin:
-        0
-        0
-        5px;
-
-    font-size:
-        19px;
-
+    margin: 0 0 5px;
 }
 
 .search-card p {
+    margin: 0 0 10px;
+}
 
-    margin:
-        0;
-
+#searchInput {
+    margin-bottom: 0;
 }
 
 
@@ -671,96 +397,37 @@ label {
 
 .question-card {
 
-    padding:
-        18px;
+    padding: 18px;
 
-    margin-bottom:
-        15px;
+    margin-bottom: 15px;
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease;
-
-}
-
-.question-card:hover {
-
-    box-shadow:
-        0 10px 28px
-        rgba(41,66,56,.10);
-
+        transform .12s ease,
+        box-shadow .12s ease;
 }
 
 .question-card:active {
-
-    transform:
-        scale(.992);
-
+    transform: scale(.99);
 }
 
 .question-title {
 
-    margin-top:
-        6px;
+    margin-top: 5px;
 
-    font-size:
-        17px;
+    font-size: 17px;
 
-    font-weight:
-        750;
+    font-weight: 750;
 
-    line-height:
-        1.45;
-
+    line-height: 1.45;
 }
 
 .question-meta {
 
-    margin-top:
-        9px;
+    margin-top: 8px;
 
-    color:
-        #7a8780;
+    color: #78857e;
 
-    font-size:
-        13px;
-
-}
-
-
-/* ==================================================
-   ANSWERS
-================================================== */
-
-.answer {
-
-    margin-top:
-        11px;
-
-    padding:
-        15px;
-
-    border:
-        1px solid
-        #e0e9e3;
-
-    border-radius:
-        18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #f0f5f1,
-            #f7f9f7
-        );
-
-}
-
-.answer p {
-
-    line-height:
-        1.55;
-
+    font-size: 13px;
 }
 
 
@@ -770,56 +437,63 @@ label {
 
 .like-button {
 
-    border:
-        0;
+    border: 0;
+
+    background: #f0f4f1;
+
+    color: #294238;
 
     padding:
         9px
         13px;
 
-    margin-top:
-        12px;
+    margin-top: 12px;
 
-    border-radius:
-        14px;
+    border-radius: 13px;
 
-    background:
-        #eef3ef;
+    cursor: pointer;
 
-    color:
-        #355346;
-
-    font-weight:
-        700;
-
-    cursor:
-        pointer;
+    font-weight: 650;
 
     transition:
-        transform .15s ease,
+        transform .12s ease,
         background .15s ease;
-
-}
-
-.like-button:hover {
-
-    background:
-        #e5eee7;
-
 }
 
 .like-button:active {
-
-    transform:
-        scale(.93);
-
+    transform: scale(.94);
 }
 
 .like-button.liked {
+    background: #ffe4e8;
+}
+
+
+/* ==================================================
+   ANSWERS
+================================================== */
+
+.answer {
+
+    margin-top: 10px;
+
+    padding: 15px;
+
+    border-radius: 18px;
 
     background:
-        #ffe4e8;
+        linear-gradient(
+            135deg,
+            #f0f5f1,
+            #f7f9f6
+        );
 
+    border:
+        1px solid #e1e9e3;
+}
+
+.answer p {
+    line-height: 1.5;
 }
 
 
@@ -829,202 +503,113 @@ label {
 
 .post-image {
 
-    display:
-        block;
+    display: block;
 
-    width:
-        100%;
+    width: 100%;
 
-    max-height:
-        430px;
+    max-height: 420px;
 
-    object-fit:
-        contain;
+    object-fit: contain;
 
-    margin-top:
-        14px;
+    margin-top: 14px;
+
+    border-radius: 18px;
+
+    background: #edf2ee;
 
     border:
-        1px solid
-        #dfe7e1;
-
-    border-radius:
-        18px;
-
-    background:
-        #edf2ee;
-
+        1px solid #dfe7e1;
 }
 
 
 /* ==================================================
-   IMAGE UPLOAD
+   UPLOAD
 ================================================== */
 
 .upload-box {
 
-    margin:
-        8px
-        0
-        12px;
-
+    margin-top: 8px;
+    margin-bottom: 12px;
 }
 
 .upload-label {
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    gap: 8px;
 
-    gap:
-        8px;
+    width: 100%;
 
-    width:
-        100%;
-
-    padding:
-        13px;
+    padding: 13px;
 
     border:
-        2px dashed
-        #b6cabe;
+        2px dashed #b5c9bb;
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
-    background:
-        #f4f8f5;
+    background: #f4f8f5;
 
-    color:
-        #456253;
+    color: #456253;
 
-    cursor:
-        pointer;
+    font-weight: 750;
 
-    font-weight:
-        750;
+    cursor: pointer;
 
     transition:
-        background .2s ease,
-        border .2s ease,
-        transform .15s ease;
-
-}
-
-.upload-label:hover {
-
-    background:
-        #edf4ef;
-
-    border-color:
-        #91ae9b;
-
+        background .15s ease,
+        border .15s ease,
+        transform .12s ease;
 }
 
 .upload-label:active {
 
-    transform:
-        scale(.98);
+    transform: scale(.985);
 
+    background: #eaf2ec;
 }
 
 .upload-input {
-
-    display:
-        none;
-
+    display: none;
 }
 
 .file-name {
 
-    margin-top:
-        7px;
+    margin-top: 7px;
 
-    text-align:
-        center;
+    color: #718078;
 
-    color:
-        #7b8781;
+    font-size: 12px;
 
-    font-size:
-        12px;
+    text-align: center;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    text-overflow:
-        ellipsis;
+    text-overflow: ellipsis;
 
+    white-space: nowrap;
 }
 
 
 /* ==================================================
-   EVENT CARDS
-================================================== */
-
-#eventsList .card {
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-}
-
-#eventsList .card h3 {
-
-    margin:
-        8px
-        0;
-
-    font-size:
-        19px;
-
-}
-
-#eventsList .card p {
-
-    line-height:
-        1.55;
-
-    color:
-        #50635a;
-
-}
-
-
-/* ==================================================
-   PLUS BUTTON
+   PLUS
 ================================================== */
 
 .plus {
 
-    position:
-        fixed;
+    position: fixed;
 
-    right:
-        20px;
+    right: 20px;
+    bottom: 22px;
 
-    bottom:
-        24px;
+    width: 62px;
+    height: 62px;
 
-    width:
-        62px;
+    border: 0;
 
-    height:
-        62px;
-
-    border:
-        0;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -1033,47 +618,23 @@ label {
             #426553
         );
 
-    color:
-        white;
+    color: white;
 
-    font-size:
-        31px;
+    font-size: 30px;
 
-    line-height:
-        1;
-
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 9px 28px
-        rgba(41,66,56,.30);
+        0 9px 28px rgba(41,66,56,.3);
 
-    z-index:
-        50;
+    z-index: 60;
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease;
-
-}
-
-.plus:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 32px
-        rgba(41,66,56,.34);
-
+        transform .12s ease;
 }
 
 .plus:active {
-
-    transform:
-        scale(.91);
-
+    transform: scale(.91);
 }
 
 
@@ -1083,180 +644,110 @@ label {
 
 .modal {
 
-    display:
-        none;
+    display: none;
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
-
-    padding:
-        18px;
+    padding: 18px;
 
     background:
-        rgba(25,39,32,.50);
+        rgba(19,32,26,.5);
 
-    backdrop-filter:
-        blur(6px);
+    backdrop-filter: blur(5px);
 
-    z-index:
-        100;
-
+    z-index: 100;
 }
 
 .modal-box {
 
-    width:
-        100%;
+    width: 100%;
+    max-width: 500px;
 
-    max-width:
-        510px;
+    max-height: 90vh;
 
-    max-height:
-        90vh;
+    overflow-y: auto;
 
-    overflow-y:
-        auto;
+    padding: 22px;
 
-    padding:
-        22px;
+    background: white;
 
-    border-radius:
-        26px;
-
-    background:
-        white;
+    border-radius: 26px;
 
     box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.23);
+        0 18px 55px rgba(0,0,0,.22);
 
     animation:
-        modalIn .2s ease;
-
+        modalIn .18s ease;
 }
 
 @keyframes modalIn {
 
     from {
-
-        opacity:
-            0;
-
-        transform:
-            scale(.96)
-            translateY(10px);
-
+        opacity: 0;
+        transform: scale(.96) translateY(8px);
     }
 
     to {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1)
-            translateY(0);
-
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 
 }
 
 .close {
 
-    float:
-        right;
+    float: right;
 
-    width:
-        36px;
+    width: 36px;
+    height: 36px;
 
-    height:
-        36px;
+    border: 0;
 
-    border:
-        0;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
+    background: #edf2ee;
 
-    background:
-        #edf2ee;
+    color: #294238;
 
-    color:
-        #294238;
+    font-size: 23px;
 
-    font-size:
-        23px;
-
-    cursor:
-        pointer;
-
+    cursor: pointer;
 }
 
 
 /* ==================================================
-   EMPTY STATES
+   EMPTY
 ================================================== */
 
 .empty {
 
     padding:
-        50px
+        48px
         20px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    border:
-        1px solid
-        rgba(41,66,56,.05);
-
-    border-radius:
-        23px;
+    color: #78857e;
 
     background:
         rgba(255,255,255,.72);
 
-    color:
-        #78857e;
+    border:
+        1px solid rgba(41,66,56,.04);
 
+    border-radius: 23px;
 }
 
 .empty-icon {
 
-    margin-bottom:
-        8px;
+    margin-bottom: 8px;
 
-    font-size:
-        43px;
-
-}
-
-
-/* ==================================================
-   QUESTION PAGE
-================================================== */
-
-#questionPage > .secondary {
-
-    margin-bottom:
-        2px;
-
-}
-
-#questionContent {
-
-    margin-top:
-        15px;
-
+    font-size: 42px;
 }
 
 
@@ -1267,89 +758,27 @@ label {
 @media (max-width: 480px) {
 
     header {
-
-        padding:
-            29px
-            16px
-            28px;
-
-        border-radius:
-            0
-            0
-            28px
-            28px;
-
+        padding-top: 27px;
     }
 
     header h1 {
-
-        font-size:
-            26px;
-
+        font-size: 25px;
     }
 
     main {
-
-        padding:
-            14px
-            11px
-            105px;
-
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     .tabs {
-
-        top:
-            6px;
-
-        gap:
-            5px;
-
-        padding:
-            5px;
-
-        border-radius:
-            20px;
-
-    }
-
-    .tab {
-
-        min-height:
-            59px;
-
-        font-size:
-            12px;
-
-        border-radius:
-            16px;
-
-    }
-
-    .card,
-    .question-card,
-    .search-card {
-
-        border-radius:
-            20px;
-
-    }
-
-    .plus {
-
-        right:
-            16px;
-
-        bottom:
-            18px;
-
+        top: 7px;
     }
 
 }
 
 
 /* ==================================================
-   REDUCED MOTION
+   REDUCE MOTION
 ================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1358,19 +787,14 @@ label {
     *::before,
     *::after {
 
-        animation-duration:
-            .01ms !important;
-
-        transition-duration:
-            .01ms !important;
-
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
 
 }
 
-</style></head><body><!-- ==================================================
-     HEADER
-================================================== --><header><div class="header-inner"><h1>🎺 Orkiestra Hub</h1><p>
+</style></head><body><header><div class="header-inner"><h1>🎺 Orkiestra Hub</h1><p>
 Wszystko, czego potrzebujemy w jednym miejscu.
 </p></div></header><main><!-- ==================================================
      TABS
@@ -1409,9 +833,7 @@ Odpowiedzi
 ================================================== --><section
 id="events"
 class="section active"
-><div class="section-heading"><h2>📅 Wydarzenia</h2><p>
-Co się dzieje w naszej orkiestrze?
-</p></div><div id="eventsList"><div class="empty"><div class="empty-icon">
+><div id="eventsList"><div class="empty"><div class="empty-icon">
 📅
 </div><p>
 Ładowanie wydarzeń...
@@ -1420,9 +842,7 @@ Co się dzieje w naszej orkiestrze?
 ================================================== --><section
 id="ask"
 class="section"
-><div class="section-heading"><h2>💬 Zapytaj</h2><p>
-Masz pytanie? Możesz zadać je anonimowo.
-</p></div><div class="card"><h2>
+><div class="card"><h2>
 💬 Zadaj anonimowe pytanie
 </h2><p class="small">
 Bez konta. Bez imienia. Bez wstydu.
@@ -1471,9 +891,7 @@ ZAPYTAJ ANONIMOWO
 ================================================== --><section
 id="answers"
 class="section"
-><div class="section-heading"><h2>💡 Odpowiedzi</h2><p>
-Przeglądaj pytania i odpowiadaj innym.
-</p></div><div class="search-card"><h2>
+><div class="search-card"><h2>
 🔍 Szukaj pytań
 </h2><p class="small">
 Znajdź pytania dotyczące tego, czego szukasz.
@@ -1611,6 +1029,7 @@ DODAJ WYDARZENIE 🎺
      SUPABASE
 ================================================== --><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
 
+
 /* ==================================================
    SUPABASE
 ================================================== */
@@ -1630,9 +1049,8 @@ supabase.createClient(
 );
 
 
-
 /* ==================================================
-   TABS
+   TAB SWITCHING
 ================================================== */
 
 function showTab(name, button) {
@@ -1655,23 +1073,44 @@ function showTab(name, button) {
     });
 
 
-    document
-    .getElementById(name)
-    .classList.add("active");
+    const target =
+        document.getElementById(name);
 
 
-    button.classList.add("active");
+    if (target) {
+
+        target.classList.add("active");
+
+    }
 
 
-    document
-    .getElementById("plusButton")
-    .style.display =
-        name === "events"
-        ? "block"
-        : "none";
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    const plus =
+        document.getElementById("plusButton");
+
+
+    if (plus) {
+
+        plus.style.display =
+            name === "events"
+            ? "block"
+            : "none";
+
+    }
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
-
 
 
 /* ==================================================
@@ -1696,9 +1135,8 @@ function closeEventModal() {
 }
 
 
-
 /* ==================================================
-   PNG CHECK
+   PNG FILE VALIDATION
 ================================================== */
 
 function getPNGFile(inputId) {
@@ -1757,7 +1195,6 @@ function getPNGFile(inputId) {
 }
 
 
-
 /* ==================================================
    FILE NAME
 ================================================== */
@@ -1770,18 +1207,12 @@ function showFileName(
     const input =
         document.getElementById(inputId);
 
-
     const output =
         document.getElementById(outputId);
 
 
-    if (
-        !input ||
-        !output
-    ) {
-
+    if (!input || !output) {
         return;
-
     }
 
 
@@ -1841,7 +1272,6 @@ function showFileName(
 }
 
 
-
 /* ==================================================
    UPLOAD
 ================================================== */
@@ -1849,20 +1279,14 @@ function showFileName(
 async function uploadPNG(file) {
 
     if (!file) {
-
         return null;
-
     }
-
-
-    const randomName =
-        crypto.randomUUID();
 
 
     const filePath =
         Date.now() +
         "-" +
-        randomName +
+        crypto.randomUUID() +
         ".png";
 
 
@@ -1874,11 +1298,8 @@ async function uploadPNG(file) {
             filePath,
             file,
             {
-                contentType:
-                    "image/png",
-
-                upsert:
-                    false
+                contentType: "image/png",
+                upsert: false
             }
         );
 
@@ -1903,15 +1324,12 @@ async function uploadPNG(file) {
         supabaseClient
         .storage
         .from("post-images")
-        .getPublicUrl(
-            filePath
-        );
+        .getPublicUrl(filePath);
 
 
     return data.publicUrl;
 
 }
-
 
 
 /* ==================================================
@@ -1965,15 +1383,11 @@ async function addOrchestraEvent() {
 
 
     const imageInput =
-        document.getElementById(
-            "eventImage"
-        );
+        document.getElementById("eventImage");
 
 
     const imageFile =
-        getPNGFile(
-            "eventImage"
-        );
+        getPNGFile("eventImage");
 
 
     if (
@@ -1992,15 +1406,11 @@ async function addOrchestraEvent() {
     if (imageFile) {
 
         imageUrl =
-            await uploadPNG(
-                imageFile
-            );
+            await uploadPNG(imageFile);
 
 
         if (!imageUrl) {
-
             return;
-
         }
 
     }
@@ -2012,20 +1422,11 @@ async function addOrchestraEvent() {
         .insert({
 
             name: name,
-
             date: date,
-
-            time:
-                time || null,
-
-            location:
-                location || null,
-
-            description:
-                description || null,
-
-            image_url:
-                imageUrl
+            time: time || null,
+            location: location || null,
+            description: description || null,
+            image_url: imageUrl
 
         });
 
@@ -2046,34 +1447,12 @@ async function addOrchestraEvent() {
     closeEventModal();
 
 
-    document
-    .getElementById("eventName")
-    .value = "";
-
-
-    document
-    .getElementById("eventDate")
-    .value = "";
-
-
-    document
-    .getElementById("eventTime")
-    .value = "";
-
-
-    document
-    .getElementById("eventLocation")
-    .value = "";
-
-
-    document
-    .getElementById("eventDescription")
-    .value = "";
-
-
-    document
-    .getElementById("eventImage")
-    .value = "";
+    document.getElementById("eventName").value = "";
+    document.getElementById("eventDate").value = "";
+    document.getElementById("eventTime").value = "";
+    document.getElementById("eventLocation").value = "";
+    document.getElementById("eventDescription").value = "";
+    document.getElementById("eventImage").value = "";
 
 
     document
@@ -2090,7 +1469,6 @@ async function addOrchestraEvent() {
     );
 
 }
-
 
 
 /* ==================================================
@@ -2139,9 +1517,7 @@ async function loadEvents() {
 
 
     const list =
-        document.getElementById(
-            "eventsList"
-        );
+        document.getElementById("eventsList");
 
 
     list.innerHTML = "";
@@ -2176,13 +1552,10 @@ async function loadEvents() {
     data.forEach(event => {
 
         const card =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
-        card.className =
-            "card";
+        card.className = "card";
 
 
         let imageHTML = "";
@@ -2223,9 +1596,7 @@ async function loadEvents() {
 
 
             <h3>
-
                 🎵 ${escapeHTML(event.name)}
-
             </h3>
 
 
@@ -2263,9 +1634,8 @@ async function loadEvents() {
 }
 
 
-
 /* ==================================================
-   ADD QUESTION
+   SUBMIT QUESTION
 ================================================== */
 
 async function submitQuestion() {
@@ -2319,15 +1689,11 @@ async function submitQuestion() {
     if (imageFile) {
 
         imageUrl =
-            await uploadPNG(
-                imageFile
-            );
+            await uploadPNG(imageFile);
 
 
         if (!imageUrl) {
-
             return;
-
         }
 
     }
@@ -2339,11 +1705,8 @@ async function submitQuestion() {
         .insert({
 
             text: text,
-
             likes: 0,
-
-            image_url:
-                imageUrl
+            image_url: imageUrl
 
         });
 
@@ -2376,7 +1739,6 @@ async function submitQuestion() {
 
     await loadQuestions();
 
-
     showAnswersTab();
 
 
@@ -2387,9 +1749,8 @@ async function submitQuestion() {
 }
 
 
-
 /* ==================================================
-   SHOW ANSWERS TAB
+   SHOW ANSWERS
 ================================================== */
 
 function showAnswersTab() {
@@ -2398,9 +1759,7 @@ function showAnswersTab() {
     .querySelectorAll(".section")
     .forEach(section => {
 
-        section.classList.remove(
-            "active"
-        );
+        section.classList.remove("active");
 
     });
 
@@ -2414,9 +1773,7 @@ function showAnswersTab() {
     .querySelectorAll(".tab")
     .forEach(tab => {
 
-        tab.classList.remove(
-            "active"
-        );
+        tab.classList.remove("active");
 
     });
 
@@ -2430,8 +1787,13 @@ function showAnswersTab() {
     .getElementById("plusButton")
     .style.display = "none";
 
-}
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
 
 
 /* ==================================================
@@ -2480,9 +1842,7 @@ async function loadQuestions(
         console.error(error);
 
         document
-        .getElementById(
-            "questionsList"
-        )
+        .getElementById("questionsList")
         .innerHTML = `
 
         <div class="empty">
@@ -2550,9 +1910,7 @@ async function loadQuestions(
     data.forEach(question => {
 
         const card =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
         card.className =
@@ -2562,9 +1920,7 @@ async function loadQuestions(
         let imageHTML = "";
 
 
-        if (
-            question.image_url
-        ) {
+        if (question.image_url) {
 
             imageHTML = `
 
@@ -2637,7 +1993,6 @@ async function loadQuestions(
 }
 
 
-
 /* ==================================================
    SEARCH
 ================================================== */
@@ -2651,9 +2006,7 @@ function searchQuestions() {
 
 
     if (!input) {
-
         return;
-
     }
 
 
@@ -2662,7 +2015,6 @@ function searchQuestions() {
     );
 
 }
-
 
 
 /* ==================================================
@@ -2707,9 +2059,7 @@ async function likeQuestion(
 
 
     if (!question) {
-
         return;
-
     }
 
 
@@ -2760,7 +2110,6 @@ async function likeQuestion(
 }
 
 
-
 /* ==================================================
    OPEN QUESTION
 ================================================== */
@@ -2783,9 +2132,7 @@ async function openQuestion(
 
 
     if (!question) {
-
         return;
-
     }
 
 
@@ -2809,9 +2156,7 @@ async function openQuestion(
     .querySelectorAll(".section")
     .forEach(section => {
 
-        section.classList.remove(
-            "active"
-        );
+        section.classList.remove("active");
 
     });
 
@@ -2878,9 +2223,7 @@ async function openQuestion(
             </button>
 
 
-            <h3
-                style="margin-top:25px;"
-            >
+            <h3 style="margin-top:25px;">
                 💡 Odpowiedzi
             </h3>
 
@@ -3036,6 +2379,12 @@ document
 )
 .innerHTML = html;
 
+
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+
 }
 
 /* ==================================================
@@ -3072,9 +2421,7 @@ const { data: question } =
 
 
 if (!question) {
-
     return;
-
 }
 
 
@@ -3115,7 +2462,7 @@ openQuestion(
 }
 
 /* ==================================================
-ADD ANSWER
+SUBMIT ANSWER
 ================================================== */
 
 async function submitAnswer(
@@ -3171,15 +2518,11 @@ let imageUrl = null;
 if (imageFile) {
 
     imageUrl =
-        await uploadPNG(
-            imageFile
-        );
+        await uploadPNG(imageFile);
 
 
     if (!imageUrl) {
-
         return;
-
     }
 
 }
@@ -3263,9 +2606,7 @@ const { data: answer } =
 
 
 if (!answer) {
-
     return;
-
 }
 
 
@@ -3315,44 +2656,35 @@ document
 .getElementById(
     "questionPage"
 )
-.classList.remove(
-    "active"
-);
+.classList.remove("active");
 
 
 document
 .getElementById(
     "answers"
 )
-.classList.add(
-    "active"
-);
+.classList.add("active");
 
 
 document
 .querySelectorAll(".tab")
 .forEach(tab => {
 
-    tab.classList.remove(
-        "active"
-    );
+    tab.classList.remove("active");
 
 });
 
 
 document
 .querySelectorAll(".tab")[2]
-.classList.add(
-    "active"
-);
+.classList.add("active");
 
 
 document
 .getElementById(
     "plusButton"
 )
-.style.display =
-    "none";
+.style.display = "none";
 
 
 const searchInput =
@@ -3369,6 +2701,12 @@ loadQuestions(
     ""
 );
 
+
+window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+
 }
 
 /* ==================================================
@@ -3378,9 +2716,7 @@ ESCAPE HTML
 function escapeHTML(text) {
 
 const div =
-    document.createElement(
-        "div"
-    );
+    document.createElement("div");
 
 
 div.textContent =
@@ -3399,4 +2735,5 @@ loadEvents();
 
 loadQuestions();
 
-</script></body></html>
+</script></body>
+</html>

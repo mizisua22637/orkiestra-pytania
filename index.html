@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Orkiestra Hub 🎺</title>
+
+
+<style>
+
+/* =========================
+   PODSTAWOWY WYGLĄD
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f5f1;
+    color: #294238;
+}
+
+header {
+    background: #294238;
+    color: white;
+    padding: 25px 20px;
+    border-radius: 0 0 25px 25px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 6px 0 0;
+    opacity: .75;
+}
+
+main {
+    max-width: 650px;
+    margin: auto;
+    padding: 20px 15px 100px;
+}
+
+
+/* =========================
+   ZAKŁADKI
+========================= */
+
+.tabs {
+    display: flex;
+    background: white;
+    padding: 5px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    padding: 12px 5px;
+    border-radius: 14px;
+    cursor: pointer;
+    color: #294238;
+    font-size: 14px;
+}
+
+.tab.active {
+    background: #dce7df;
+    font-weight: bold;
+}
+
+
+/* =========================
+   SEKCJE
+========================= */
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+
+/* =========================
+   KARTY
+========================= */
+
+.card {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+}
+
+.card h2,
+.card h3 {
+    margin-top: 0;
+}
+
+.small {
+    color: #708078;
+    font-size: 13px;
+}
+
+
+/* =========================
+   POLA TEKSTOWE
+========================= */
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    border: 2px solid #e1e7e2;
+    border-radius: 13px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =========================
+   PRZYCISKI
+========================= */
+
+.primary {
+    width: 100%;
+    border: 0;
+    background: #294238;
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.secondary {
+    border: 0;
+    background: #e5ece7;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   PYTANIA
+========================= */
+
+.question-card {
+    background: white;
+    padding: 18px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.question-title {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.question-meta {
+    color: #78857e;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+
+/* =========================
+   SERDUSZKA
+========================= */
+
+.like-button {
+    border: 0;
+    background: #f1f4f1;
+    padding: 8px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.like-button.liked {
+    background: #ffe4e8;
+}
+
+
+/* =========================
+   ODPOWIEDZI
+========================= */
+
+.answer {
+    background: #f1f4f1;
+    padding: 14px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   PRZYCISK +
+========================= */
+
+.plus {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    border: 0;
+
+    background: #294238;
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+
+/* =========================
+   OKNO DODAWANIA WYDARZENIA
+========================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 100;
+}
+
+.modal-box {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+
+    padding: 22px;
+
+    border-radius: 22px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    float: right;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   PUSTE SEKCJE
+========================= */
+
+.empty {
+    text-align: center;
+    padding: 45px 20px;
+    color: #78857e;
+}
+
+.empty-icon {
+    font-size: 42px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAGŁÓWEK
+========================= -->
+
+<header>
+
+<h1>🎺 Orkiestra Hub</h1>
+
+<p>
+Wszystko, czego potrzebujemy w jednym miejscu.
+</p>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     ZAKŁADKI
+========================= -->
+
+<div class="tabs">
+
+
+<button
+class="tab active"
+onclick="showTab('events', this)"
+>
+📅<br>Wydarzenia
+</button>
+
+
+<button
+class="tab"
+onclick="showTab('ask', this)"
+>
+💬<br>Zapytaj
+</button>
+
+
+<button
+class="tab"
+onclick="showTab('answers', this)"
+>
+💡<br>Odpowiedzi
+</button>
+
+
+</div>
+
+
+
+<!-- =========================
+     WYDARZENIA
+========================= -->
+
+<section
+id="events"
+class="section active"
+>
+
+<div id="eventsList">
+
+<div class="empty">
+
+<div class="empty-icon">
+📅
+</div>
+
+<p>
+Ładowanie wydarzeń...
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ZAPYTAJ
+========================= -->
+
+<section
+id="ask"
+class="section"
+>
+
+<div class="card">
+
+<h2>
+💬 Zadaj anonimowe pytanie
+</h2>
+
+<p class="small">
+Bez konta. Bez imienia. Bez wstydu.
+</p>
+
+
+<textarea
+id="questionInput"
+placeholder="O co chcesz zapytać?"
+></textarea>
+
+
+<button
+class="primary"
+onclick="submitQuestion()"
+>
+ZAPYTAJ ANONIMOWO
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ODPOWIEDZI
+========================= -->
+
+<section
+id="answers"
+class="section"
+>
+
+<div id="questionsList">
+
+<div class="empty">
+
+<div class="empty-icon">
+💡
+</div>
+
+<p>
+Ładowanie pytań...
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     STRONA PYTANIA
+========================= -->
+
+<section
+id="questionPage"
+class="section"
+>
+
+<button
+class="secondary"
+onclick="backToQuestions()"
+>
+← Wróć do pytań
+</button>
+
+
+<div
+id="questionContent"
+style="margin-top:15px;"
+></div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================
+     PRZYCISK DODAWANIA
+========================= -->
+
+<button
+id="plusButton"
+class="plus"
+onclick="openEventModal()"
+>
++
+</button>
+
+
+
+<!-- =========================
+     OKNO NOWEGO WYDARZENIA
+========================= -->
+
+<div
+id="eventModal"
+class="modal"
+>
+
+<div class="modal-box">
+
+
+<button
+class="close"
+onclick="closeEventModal()"
+>
+×
+</button>
+
+
+<h2>
+📅 Dodaj wydarzenie
+</h2>
+
+
+<label>
+Nazwa wydarzenia
+</label>
+
+<input
+id="eventName"
+placeholder="Koncert, próba, wyjazd..."
+>
+
+
+<label>
+Data
+</label>
+
+<input
+id="eventDate"
+type="date"
+>
+
+
+<label>
+Godzina
+</label>
+
+<input
+id="eventTime"
+type="time"
+>
+
+
+<label>
+Miejsce
+</label>
+
+<input
+id="eventLocation"
+placeholder="Gdzie?"
+>
+
+
+<label>
+Dodatkowe informacje
+</label>
+
+<textarea
+id="eventDescription"
+placeholder="Mundur, co zabrać, godzina zbiórki..."
+></textarea>
+
+
+<button
+class="primary"
+onclick="createEvent()"
+>
+DODAJ WYDARZENIE 🎺
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/*
+====================================================
+POŁĄCZENIE Z SUPABASE
+====================================================
+
+WSTAW TUTAJ SWÓJ ADRES PROJEKTU
+ORAZ KLUCZ PUBLISHABLE.
+
+NIE WSTAWIAJ KLUCZA SECRET / SERVICE ROLE.
+*/
+
+
+const SUPABASE_URL =
+"https://dlrekntxaplaahdhdvjx.supabase.co/rest/v1/";
+
+
+const SUPABASE_KEY =
+"sb_publishable_PV6MGYFLs3kwV7Pr5u4uCw_f43IxNfk";
+
+
+const supabaseClient =
+supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+
+/*
+====================================================
+ZAKŁADKI
+====================================================
+*/
+
+function showTab(name, button) {
+
+
+document
+.querySelectorAll(".section")
+.forEach(section => {
+
+section.classList.remove("active");
+
+});
+
+
+document
+.querySelectorAll(".tab")
+.forEach(tab => {
+
+tab.classList.remove("active");
+
+});
+
+
+document
+.getElementById(name)
+.classList.add("active");
+
+
+button.classList.add("active");
+
+
+document
+.getElementById("plusButton")
+.style.display =
+name === "events"
+? "block"
+: "none";
+
+}
+
+
+
+/*
+====================================================
+OKNO WYDARZENIA
+====================================================
+*/
+
+function openEventModal() {
+
+document
+.getElementById("eventModal")
+.style.display = "flex";
+
+}
+
+
+function closeEventModal() {
+
+document
+.getElementById("eventModal")
+.style.display = "none";
+
+}
+
+
+
+/*
+====================================================
+DODAWANIE WYDARZENIA
+====================================================
+*/
+
+async function createEvent() {
+
+
+const name =
+document
+.getElementById("eventName")
+.value
+.trim();
+
+
+const date =
+document
+.getElementById("eventDate")
+.value;
+
+
+const time =
+document
+.getElementById("eventTime")
+.value;
+
+
+const location =
+document
+.getElementById("eventLocation")
+.value
+.trim();
+
+
+const description =
+document
+.getElementById("eventDescription")
+.value
+.trim();
+
+
+if (!name || !date) {
+
+alert(
+"Podaj nazwę wydarzenia i datę!"
+);
+
+return;
+
+}
+
+
+/*
+WYSYŁAMY WYDARZENIE DO BAZY
+*/
+
+const { data, error } =
+await supabaseClient
+.from("events")
+.insert({
+
+name: name,
+
+date: date,
+
+time: time || null,
+
+location: location || null,
+
+description:
+description || null
+
+})
+.select();
+
+
+if (error) {
+
+console.error(error);
+
+alert(
+"Nie udało się dodać wydarzenia 😭"
+);
+
+return;
+
+}
+
+
+closeEventModal();
+
+
+document
+.getElementById("eventName")
+.value = "";
+
+
+document
+.getElementById("eventDate")
+.value = "";
+
+
+document
+.getElementById("eventTime")
+.value = "";
+
+
+document
+.getElementById("eventLocation")
+.value = "";
+
+
+document
+.getElementById("eventDescription")
+.value = "";
+
+
+await loadEvents();
+
+
+alert(
+"Wydarzenie zostało dodane! 🎺"
+);
+
+}
+
+
+
+/*
+====================================================
+WCZYTYWANIE WYDARZEŃ
+====================================================
+*/
+
+async function loadEvents() {
+
+
+const { data, error } =
+await supabaseClient
+.from("events")
+.select("*")
+.order("date", {
+ascending: true
+});
+
+
+if (error) {
+
+console.error(error);
+
+document
+.getElementById("eventsList")
+.innerHTML = `
+
+<div class="empty">
+
+<div class="empty-icon">
+😭
+</div>
+
+<p>
+Nie udało się wczytać wydarzeń.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+const list =
+document.getElementById(
+"eventsList"
+);
+
+
+list.innerHTML = "";
+
+
+if (!data || data.length === 0) {
+
+list.innerHTML = `
+
+<div class="empty">
+
+<div class="empty-icon">
+📅
+</div>
+
+<p>
+Brak wydarzeń.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+data.forEach(event => {
+
+
+const card =
+document.createElement("div");
+
+
+card.className = "card";
+
+
+card.innerHTML = `
+
+<div class="small">
+
+📆 ${escapeHTML(event.date)}
+
+${event.time
+? " • 🕐 " +
+escapeHTML(event.time)
+: ""}
+
+</div>
+
+
+<h3>
+
+🎵 ${escapeHTML(event.name)}
+
+</h3>
+
+
+<p>
+
+${escapeHTML(
+event.description || ""
+)}
+
+</p>
+
+
+${
+event.location
+?
+`<div class="small">
+📍 ${escapeHTML(event.location)}
+</div>`
+:
+""
+}
+
+`;
+
+
+list.appendChild(card);
+
+});
+
+}
+
+
+
+/*
+====================================================
+DODAWANIE PYTANIA
+====================================================
+*/
+
+async function submitQuestion() {
+
+
+const input =
+document.getElementById(
+"questionInput"
+);
+
+
+const text =
+input.value.trim();
+
+
+if (!text) {
+
+alert(
+"Najpierw napisz pytanie! 💬"
+);
+
+return;
+
+}
+
+
+const { error } =
+await supabaseClient
+.from("questions")
+.insert({
+
+text: text,
+
+likes: 0
+
+});
+
+
+if (error) {
+
+console.error(error);
+
+alert(
+"Nie udało się dodać pytania 😭"
+);
+
+return;
+
+}
+
+
+input.value = "";
+
+
+await loadQuestions();
+
+
+showAnswersTab();
+
+
+alert(
+"Twoje pytanie zostało dodane anonimowo! 💚"
+);
+
+}
+
+
+
+/*
+====================================================
+PRZEJŚCIE DO ODPOWIEDZI
+====================================================
+*/
+
+function showAnswersTab() {
+
+
+document
+.querySelectorAll(".section")
+.forEach(section => {
+
+section.classList.remove("active");
+
+});
+
+
+document
+.getElementById("answers")
+.classList.add("active");
+
+
+document
+.querySelectorAll(".tab")
+.forEach(tab => {
+
+tab.classList.remove("active");
+
+});
+
+
+document
+.querySelectorAll(".tab")[2]
+.classList.add("active");
+
+
+document
+.getElementById("plusButton")
+.style.display = "none";
+
+}
+
+
+
+/*
+====================================================
+WCZYTYWANIE PYTAŃ
+====================================================
+*/
+
+async function loadQuestions() {
+
+
+const { data, error } =
+await supabaseClient
+.from("questions")
+.select("*")
+.order(
+"created_at",
+{
+ascending: false
+}
+);
+
+
+if (error) {
+
+console.error(error);
+
+return;
+
+}
+
+
+const list =
+document.getElementById(
+"questionsList"
+);
+
+
+list.innerHTML = "";
+
+
+if (!data || data.length === 0) {
+
+list.innerHTML = `
+
+<div class="empty">
+
+<div class="empty-icon">
+💡
+</div>
+
+<p>
+Nie ma jeszcze żadnych pytań!
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+data.forEach(question => {
+
+
+const card =
+document.createElement("div");
+
+
+card.className =
+"question-card";
+
+
+card.innerHTML = `
+
+<div
+onclick="openQuestion(${question.id})"
+style="cursor:pointer;"
+>
+
+<div class="small">
+💬 Anonimowo
+</div>
+
+
+<div class="question-title">
+
+${escapeHTML(
+question.text
+)}
+
+</div>
+
+
+<div class="question-meta">
+
+❤️ ${question.likes || 0}
+
+</div>
+
+</div>
+
+
+<button
+class="like-button"
+onclick="likeQuestion(event, ${question.id})"
+>
+
+❤️ ${question.likes || 0}
+
+</button>
+
+`;
+
+
+list.appendChild(card);
+
+});
+
+}
+
+
+
+/*
+====================================================
+POLUBIENIE PYTANIA
+====================================================
+*/
+
+async function likeQuestion(
+event,
+questionId
+) {
+
+
+event.stopPropagation();
+
+
+const key =
+"liked-question-" +
+questionId;
+
+
+if (
+localStorage.getItem(key)
+) {
+
+alert(
+"Już polubiłeś to pytanie! ❤️"
+);
+
+return;
+
+}
+
+
+const { data: question } =
+await supabaseClient
+.from("questions")
+.select("likes")
+.eq("id", questionId)
+.single();
+
+
+if (!question) return;
+
+
+const { error } =
+await supabaseClient
+.from("questions")
+.update({
+
+likes:
+(question.likes || 0) + 1
+
+})
+.eq("id", questionId);
+
+
+if (error) {
+
+console.error(error);
+
+return;
+
+}
+
+
+localStorage.setItem(
+key,
+"true"
+);
+
+
+loadQuestions();
+
+}
+
+
+
+/*
+====================================================
+OTWIERANIE PYTANIA
+====================================================
+*/
+
+async function openQuestion(
+questionId
+) {
+
+
+const { data: question } =
+await supabaseClient
+.from("questions")
+.select("*")
+.eq("id", questionId)
+.single();
+
+
+if (!question) return;
+
+
+const { data: answers } =
+await supabaseClient
+.from("answers")
+.select("*")
+.eq(
+"question_id",
+questionId
+)
+.order(
+"likes",
+{
+ascending: false
+}
+);
+
+
+document
+.querySelectorAll(".section")
+.forEach(section => {
+
+section.classList.remove("active");
+
+});
+
+
+document
+.getElementById("questionPage")
+.classList.add("active");
+
+
+let html = `
+
+<div class="card">
+
+
+<div class="small">
+💬 Anonimowo
+</div>
+
+
+<h2>
+
+${escapeHTML(
+question.text
+)}
+
+</h2>
+
+
+<button
+class="like-button"
+onclick="likeQuestionFromPage(${question.id})"
+>
+
+❤️ ${question.likes || 0}
+
+</button>
+
+
+<h3 style="margin-top:25px;">
+💡 Odpowiedzi
+</h3>
+
+`;
+
+
+if (!answers || answers.length === 0) {
+
+html += `
+
+<p class="small">
+
+Nikt jeszcze nie odpowiedział.
+Bądź pierwszy! 👀
+
+</p>
+
+`;
+
+} else {
+
+
+answers.forEach(answer => {
+
+html += `
+
+<div class="answer">
+
+<div class="small">
+💬 Anonimowo
+</div>
+
+
+<p>
+
+${escapeHTML(
+answer.text
+)}
+
+</p>
+
+
+<button
+class="like-button"
+onclick="
+likeAnswer(
+${question.id},
+${answer.id}
+)
+"
+>
+
+❤️ ${answer.likes || 0}
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+html += `
+
+<textarea
+id="answerInput"
+placeholder="Napisz anonimową odpowiedź..."
+></textarea>
+
+
+<button
+class="primary"
+onclick="submitAnswer(${question.id})"
+>
+
+ODPOWIEDZ ANONIMOWO
+
+</button>
+
+
+</div>
+
+`;
+
+
+document
+.getElementById("questionContent")
+.innerHTML = html;
+
+}
+
+
+
+/*
+====================================================
+POLUBIENIE PYTANIA NA JEGO STRONIE
+====================================================
+*/
+
+async function likeQuestionFromPage(
+questionId
+) {
+
+
+const key =
+"liked-question-" +
+questionId;
+
+
+if (
+localStorage.getItem(key)
+) {
+
+return;
+
+}
+
+
+const { data: question } =
+await supabaseClient
+.from("questions")
+.select("likes")
+.eq("id", questionId)
+.single();
+
+
+if (!question) return;
+
+
+await supabaseClient
+.from("questions")
+.update({
+
+likes:
+(question.likes || 0) + 1
+
+})
+.eq("id", questionId);
+
+
+localStorage.setItem(
+key,
+"true"
+);
+
+
+openQuestion(questionId);
+
+}
+
+
+
+/*
+====================================================
+DODAWANIE ODPOWIEDZI
+====================================================
+*/
+
+async function submitAnswer(
+questionId
+) {
+
+
+const input =
+document.getElementById(
+"answerInput"
+);
+
+
+const text =
+input.value.trim();
+
+
+if (!text) {
+
+alert(
+"Najpierw napisz odpowiedź! 💬"
+);
+
+return;
+
+}
+
+
+const { error } =
+await supabaseClient
+.from("answers")
+.insert({
+
+question_id:
+questionId,
+
+text: text,
+
+likes: 0
+
+});
+
+
+if (error) {
+
+console.error(error);
+
+alert(
+"Nie udało się dodać odpowiedzi 😭"
+);
+
+return;
+
+}
+
+
+openQuestion(questionId);
+
+}
+
+
+
+/*
+====================================================
+POLUBIENIE ODPOWIEDZI
+====================================================
+*/
+
+async function likeAnswer(
+questionId,
+answerId
+) {
+
+
+const key =
+"liked-answer-" +
+answerId;
+
+
+if (
+localStorage.getItem(key)
+) {
+
+alert(
+"Już polubiłeś tę odpowiedź! ❤️"
+);
+
+return;
+
+}
+
+
+const { data: answer } =
+await supabaseClient
+.from("answers")
+.select("likes")
+.eq("id", answerId)
+.single();
+
+
+if (!answer) return;
+
+
+await supabaseClient
+.from("answers")
+.update({
+
+likes:
+(answer.likes || 0) + 1
+
+})
+.eq("id", answerId);
+
+
+localStorage.setItem(
+key,
+"true"
+);
+
+
+openQuestion(questionId);
+
+}
+
+
+
+/*
+====================================================
+POWRÓT DO PYTAŃ
+====================================================
+*/
+
+function backToQuestions() {
+
+
+document
+.getElementById("questionPage")
+.classList.remove("active");
+
+
+document
+.getElementById("answers")
+.classList.add("active");
+
+
+loadQuestions();
+
+}
+
+
+
+/*
+====================================================
+ZABEZPIECZENIE TEKSTU
+====================================================
+*/
+
+function escapeHTML(text) {
+
+
+const div =
+document.createElement("div");
+
+
+div.textContent =
+text || "";
+
+
+return div.innerHTML;
+
+}
+
+
+
+/*
+====================================================
+URUCHOMIENIE STRONY
+====================================================
+*/
+
+loadEvents();
+
+loadQuestions();
+
+</script>
+
+
+</body>
+
+</html>
